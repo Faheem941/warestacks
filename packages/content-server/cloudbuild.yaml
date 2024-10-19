@@ -1,0 +1,6 @@
+steps:
+  - name: 'node:20'
+    args: ['predeploy.js', 'content-server']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:alpine'
+    args: ['gcloud', 'app', 'deploy', '$_APP_YAML', '$_GCLOUD_ARG']
+    timeout: '1200s'

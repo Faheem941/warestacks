@@ -1,0 +1,17 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude:
+    - node_modules/**
+    # Need to exclude the analyzer config file because of an incorrect warning in it
+    # https://github.com/dart-lang/sdk/issues/42910
+    - analysis_options.yaml
+    - packages/app-common/lib/types/api.dart
+    - packages/app/lib/generated_plugin_registrant.dart
+    - packages/daily-lives-app/lib/generated_plugin_registrant.dart
+
+  errors:
+    import_of_legacy_library_into_null_safe: ignore
+  language:
+    strict-raw-types: true
+    strict-inference: true

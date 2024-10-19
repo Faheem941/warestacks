@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "@dwms/dev",
+  "version": "1.0.0",
+  "engines": {
+    "node": "^20.9.0"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "start": "cd packages/content-server && npm start",
+    "gcp-build": "yarn workspace @dwms/content-server gcp-build",
+    "build": "yarn workspace @dwms/content-server build",
+    "lint": "yarn workspace @dwms/content-server lint:check",
+    "test": "yarn workspace @dwms/content-server test"
+  },
+  "resolutions": {
+    "@types/react": "18.2.65"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-prettier": "^5.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.1.6",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "eslint-import-resolver-typescript": "^3.6.1"
+  }
+}

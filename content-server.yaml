@@ -1,0 +1,51 @@
+# This configuration is mainly used for app engine flex environment, which runs on docker container
+# service: default
+# # Custom runtime required for Node.js > v12.19
+# # See SO question: https://stackoverflow.com/questions/69360628/specifying-node-js-version-for-google-cloud-app-engine-flexible
+# runtime: custom
+# env: flex
+# instance_class: F1
+
+# # resources:
+# #   cpu: 1
+# #   memory_gb: 0.2
+# #   disk_size_gb: 5
+
+# automatic_scaling:
+#   min_num_instances: 1
+#   max_num_instances: 2
+#   cool_down_period_sec: 240
+#   cpu_utilization:
+#     target_utilization: 0.75
+
+# handlers:
+# - url: /.*
+#   script: auto
+#   secure: always
+#   redirect_http_response_code: 301
+
+# This configuration runs on app engine standard environment which is cheaper and not much customized option, it doesn't run on docker
+# doc ref https://cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=python#instance_class
+service: default
+runtime: nodejs20
+env: standard
+instance_class: F1
+
+env_variables:
+  NODE_ENV: production
+  PORT: 8080
+
+inbound_services:
+- warmup
+
+automatic_scaling:
+  min_instances: 1
+  max_instances: 2
+  target_cpu_utilization: 0.75
+
+
+handlers:
+- url: /.*
+  script: auto
+  secure: always
+  redirect_http_response_code: 301
