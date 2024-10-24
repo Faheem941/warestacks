@@ -26,7 +26,7 @@
     "@google-cloud/datastore": "^7.2.0",
     "@google-cloud/profiler": "^5.0.4",
     "@google-cloud/secret-manager": "^4.2.0",
-    "apollo-server-express": "^3.11.1",
+    "apollo-server-express": "^3.13.0",
     "apollo-server-types": "^3.7.1",
     "async": "^3.2.4",
     "bcrypt": "^5.1.0",

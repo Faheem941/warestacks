@@ -12,6 +12,9 @@ import {
   IMongooseBannedUser,
   IMongooseSelf,
   IMongooseUser,
+  IMongooseWarehouse,
+  IMongooseWarehouseLocation,
+  IMongooseWarehouseProvider,
 } from './model';
 
 mongoose.Promise = global.Promise;
@@ -200,3 +203,80 @@ const authSchema = new mongoose.Schema<IMongooseAuthentication>(
 );
 
 export const Authentication = mongoose.model<IMongooseAuthentication>('Authentication', authSchema);
+
+// Warehouse related mongoose models
+const warehouseProviderSchema = new mongoose.Schema<IMongooseWarehouseProvider>(
+  {
+    name: { type: String, required: true },
+    email: { type: String, required: true, index: true, unique: true },
+    phone: { type: String },
+  },
+  { timestamps: true, autoCreate: false },
+);
+
+warehouseProviderSchema.virtual('warehouses', {
+  ref: 'Warehouse',
+  localField: '_id',
+  foreignField: 'provider',
+  justOne: false,
+});
+
+export const WarehouseProvider = mongoose.model<IMongooseWarehouseProvider>(
+  'WarehouseProvider',
+  warehouseProviderSchema,
+);
+
+// Location Schema
+const warehouseLocationSchema = new mongoose.Schema<IMongooseWarehouseLocation>(
+  {
+    city: { type: String, required: true },
+    region: { type: String, required: true },
+    distanceFromLogisticHub: { type: Number, required: true },
+  },
+  { timestamps: true, autoCreate: false },
+);
+
+warehouseLocationSchema.virtual('warehouses', {
+  ref: 'Warehouse',
+  localField: '_id',
+  foreignField: 'location',
+  justOne: false,
+});
+
+export const WarehouseLocation = mongoose.model<IMongooseWarehouseLocation>(
+  'WarehouseLocation',
+  warehouseLocationSchema,
+);
+
+// Warehouse Listing Schema
+const warehouseSchema = new mongoose.Schema<IMongooseWarehouse>(
+  {
+    title: { type: String, required: true },
+    description: { type: String, required: true },
+    pricePerDay: { type: Number, required: true },
+    badges: { type: [String] },
+    rating: { type: Number, default: 0 },
+    reviewsCount: { type: Number, default: 0 },
+    providerId: { type: mongoose.Schema.Types.ObjectId, ref: 'WarehouseProvider', required: true },
+    locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'WarehouseLocation', required: true },
+  },
+  { timestamps: true, autoCreate: false },
+);
+
+warehouseSchema.virtual('provider', {
+  ref: 'WarehouseProvider',
+  localField: 'providerId',
+  foreignField: '_id',
+  justOne: true,
+});
+
+warehouseSchema.virtual('location', {
+  ref: 'WarehouseLocation',
+  localField: 'locationId',
+  foreignField: '_id',
+  justOne: true,
+});
+
+warehouseSchema.index({ providerId: 1, locationId: 1 });
+
+export const Warehouse = mongoose.model<IMongooseWarehouse>('Warehouse', warehouseSchema);

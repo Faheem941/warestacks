@@ -1,7 +1,15 @@
 import { ObjectId } from 'mongodb';
 import { Document, Types } from 'mongoose';
 
-import { IAdmin, IAuthentication, ISelf, IUser } from '@dwms/common/model';
+import {
+  IAdmin,
+  IAuthentication,
+  ISelf,
+  IUser,
+  IWarehouse,
+  IWarehouseLocation,
+  IWarehouseProvider,
+} from '@dwms/common/model';
 
 interface IBannedUser {
   email?: string;
@@ -29,3 +37,21 @@ export interface IMongooseBannedUser extends MongooseLeanDocument<IBannedUser> {
 
 export interface IMongooseAdmin extends MongooseLeanDocument<IAdmin> {}
 export interface IMongooseAuthentication extends MongooseLeanDocument<IAuthentication> {}
+export interface IMongooseWarehouse
+  extends Omit<
+    MongooseLeanDocument<IWarehouse>,
+    'location' | 'provider' | 'providerId' | 'locationId'
+  > {
+  providerId: Types.ObjectId;
+  provider: IWarehouseProvider;
+  locationId: Types.ObjectId;
+  location: IWarehouseLocation;
+}
+export interface IMongooseWarehouseLocation
+  extends Omit<MongooseLeanDocument<IWarehouseLocation>, 'warehouses'> {
+  warehouses?: IWarehouse[];
+}
+export interface IMongooseWarehouseProvider
+  extends Omit<MongooseLeanDocument<IWarehouseProvider>, 'warehouses'> {
+  warehouses?: IWarehouse[];
+}

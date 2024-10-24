@@ -13,8 +13,8 @@ import { Document } from 'mongoose';
 
 // import { addBreadcrumb } from '@sentry/node';
 
-import { IMongooseAdmin, IMongooseSelf } from './model';
-import { Admin, ProjectionObject, Self, User } from './mongoose';
+import { IMongooseAdmin, IMongooseSelf, IMongooseWarehouseLocation } from './model';
+import { Admin, ProjectionObject, Self, User, WarehouseLocation } from './mongoose';
 import { logGAEvent } from './utilities/gapis';
 import { printWarning } from './utilities/log';
 
@@ -23,6 +23,9 @@ import { printWarning } from './utilities/log';
 export const userTypeComposer = composeWithMongooseDiscriminators(User);
 export const selfTypeComposer = userTypeComposer.discriminator<IMongooseSelf>(Self);
 export const adminTypeComposer = composeWithMongoose<IMongooseAdmin & Document>(Admin);
+export const warehouseLocationTypeComposer = composeWithMongoose<
+  IMongooseWarehouseLocation & Document
+>(WarehouseLocation);
 
 /* ------------------------------------- GraphQL projection ------------------------------------- */
 

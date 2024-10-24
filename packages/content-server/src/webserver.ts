@@ -139,7 +139,7 @@ async function createApp(logLevel: number) {
   );
 
   // Disable CSRF check in development so we can use the graphql playground
-  if (!isProduction) {
+  if (isProduction) {
     // Needed for CSRF when cookie set to true
     app.use(cookieParser(await getSecret('cookieSecret')));
 
