@@ -1,65 +1,71 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
 import Navbar from '@/components/ui/navigation';
 import WarehouseCard from '@/components/ui/warehouseCard';
 import FilterSection from './filterSection';
 
+const warehouses = [
+  {
+    name: 'Warehouse Plus',
+    distance: '0.4 km from logistic hub',
+    price: 180,
+    rating: 9.4,
+    reviews: 500,
+    badges: ['Badge 1', 'Badge 2'],
+    imageSrc: '/hero.png',
+    ownedBy: 'Secure storage solution',
+    feature: 'Spacious storage area',
+  },
+  {
+    name: 'Warehouse Plus',
+    distance: '0.4 km from logistic hub',
+    price: 180,
+    rating: 9.4,
+    reviews: 500,
+    badges: ['Badge 1', 'Badge 2'],
+    imageSrc: '/hero.png',
+    ownedBy: 'Secure storage solution',
+    feature: 'Spacious storage area',
+  },
+  {
+    name: 'Warehouse Plus',
+    distance: '0.4 km from logistic hub',
+    price: 180,
+    rating: 9.4,
+    reviews: 500,
+    badges: ['Badge 1', 'Badge 2'],
+    imageSrc: '/hero.png',
+    feature: 'Spacious storage area',
+    ownedBy: 'Secure storage solution',
+  },
+  {
+    name: 'Warehouse Plus',
+    distance: '0.4 km from logistic hub',
+    price: 180,
+    rating: 9.4,
+    reviews: 500,
+    badges: ['Badge 1', 'Badge 2'],
+    imageSrc: '/hero.png',
+    feature: 'Spacious storage area',
+    ownedBy: 'Secure storage solution',
+  },
+  {
+    name: 'Warehouse Plus',
+    distance: '0.4 km from logistic hub',
+    price: 180,
+    rating: 9.4,
+    reviews: 500,
+    badges: ['Badge 1', 'Badge 2'],
+    imageSrc: '/hero.png',
+    feature: 'Spacious storage area',
+    ownedBy: 'Secure storage solution',
+  },
+];
+
 function WarehousePage() {
-  const warehouses = [
-    {
-      name: 'Warehouse Plus',
-      distance: '0.4 km from logistic hub',
-      price: 180,
-      rating: 9.4,
-      reviews: 500,
-      badges: ['Badge 1', 'Badge 2'],
-      imageSrc: '/hero.png',
-      ownedBy: 'Secure storage solution',
-      feature: 'Spacious storage area',
-    },
-    {
-      name: 'Warehouse Plus',
-      distance: '0.4 km from logistic hub',
-      price: 180,
-      rating: 9.4,
-      reviews: 500,
-      badges: ['Badge 1', 'Badge 2'],
-      imageSrc: '/hero.png',
-      ownedBy: 'Secure storage solution',
-      feature: 'Spacious storage area',
-    },
-    {
-      name: 'Warehouse Plus',
-      distance: '0.4 km from logistic hub',
-      price: 180,
-      rating: 9.4,
-      reviews: 500,
-      badges: ['Badge 1', 'Badge 2'],
-      imageSrc: '/hero.png',
-      feature: 'Spacious storage area',
-      ownedBy: 'Secure storage solution',
-    },
-    {
-      name: 'Warehouse Plus',
-      distance: '0.4 km from logistic hub',
-      price: 180,
-      rating: 9.4,
-      reviews: 500,
-      badges: ['Badge 1', 'Badge 2'],
-      imageSrc: '/hero.png',
-      feature: 'Spacious storage area',
-      ownedBy: 'Secure storage solution',
-    },
-    {
-      name: 'Warehouse Plus',
-      distance: '0.4 km from logistic hub',
-      price: 180,
-      rating: 9.4,
-      reviews: 500,
-      badges: ['Badge 1', 'Badge 2'],
-      imageSrc: '/hero.png',
-      feature: 'Spacious storage area',
-      ownedBy: 'Secure storage solution',
-    },
-  ];
+  const searchParams = useSearchParams();
+  const location = searchParams.get('location');
 
   return (
     <>

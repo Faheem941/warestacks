@@ -13,7 +13,7 @@ import { getLocationsQuery } from '@/apollo/schema/warehouse';
 function Hero() {
   const router = useRouter();
   const [isShowResult, setIsShowResult] = useState(false);
-  const [inputValue, setInputValue] = useState('');
+  const [searchText, setSearchText] = useState('');
   const [selectedLocation, setSelectedLocation] = useState<
     Omit<IWarehouseLocation, 'distanceFromLogisticHub' | 'warehouses'> | undefined
   >();
@@ -52,20 +52,24 @@ function Hero() {
           </p>
           <div className="w-auto md:w-[40rem] bg-white h-fit shadow-lg p-4 mt-10 rounded-2xl flex flex-row gap-x-4 relative">
             <Input
-              value={inputValue}
+              value={searchText}
               variant="large"
               id="location"
               label="Enter a location"
               placeholder="e.g London, Greater London"
               onChange={(e) => {
                 const { value } = e.target;
-                setInputValue(value);
+                setSearchText(value);
 
                 debouncedCallback(value);
               }}
               isLoading={isLoading}
             />
-            <Button text="Search" variant="lg" onClick={() => router.push('/listing')} />
+            <Button
+              text="Search"
+              variant="lg"
+              onClick={() => router.push(`/listing?location=${searchText}`)}
+            />
             <div
               className={`absolute top-[7rem] left-4 bg-white  shadow-xl ${locationsData?.getLocations.length && isShowResult && !selectedLocation ? 'h-fit md:w-[30rem] z-10' : 'h-0 w-0 -z-10'} border border-gray-300 rounded-xl flex flex-col`}
             >
@@ -78,7 +82,7 @@ function Hero() {
                     className="text-neutral-600 font-medium px-5 py-2 cursor-pointer hover:bg-neutral-100 first:rounded-t-xl last:rounded-b-xl border border-transparent"
                     onClick={() => {
                       setSelectedLocation(location);
-                      setInputValue(`${location.city}, ${location.region}`);
+                      setSearchText(`${location.city}, ${location.region}`);
                     }}
                   >
                     {location.city}, {location.region}

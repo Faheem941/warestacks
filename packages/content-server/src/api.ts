@@ -3,7 +3,23 @@ import './queries';
 
 import { schemaComposer } from 'graphql-compose';
 
-import { selfTypeComposer, userTypeComposer, warehouseLocationTypeComposer } from './graphql';
+import {
+  selfTypeComposer,
+  userTypeComposer,
+  warehouseLocationTypeComposer,
+  warehouseProviderTypeComposer,
+  warehouseTypeComposer,
+} from './graphql';
+/* ------------------------------------------- Custom GraphQL Fields ------------------------------------------ */
+
+warehouseTypeComposer.addFields({
+  provider: {
+    type: warehouseProviderTypeComposer,
+  },
+  location: {
+    type: warehouseLocationTypeComposer,
+  },
+});
 
 /* ------------------------------------------- Queries ------------------------------------------ */
 
@@ -14,6 +30,7 @@ schemaComposer.Query.addFields({
 
   // warehouse queries
   getLocations: warehouseLocationTypeComposer.getResolver('getLocations'),
+  getWarehouses: warehouseTypeComposer.getResolver('getWarehouses'),
 });
 
 /* ----------------------------------------- Mutations ------------------------------------------ */

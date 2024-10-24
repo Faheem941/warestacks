@@ -11,10 +11,22 @@ import {
 } from 'graphql-parse-resolve-info';
 import { Document } from 'mongoose';
 
-// import { addBreadcrumb } from '@sentry/node';
-
-import { IMongooseAdmin, IMongooseSelf, IMongooseWarehouseLocation } from './model';
-import { Admin, ProjectionObject, Self, User, WarehouseLocation } from './mongoose';
+import {
+  IMongooseAdmin,
+  IMongooseSelf,
+  IMongooseWarehouse,
+  IMongooseWarehouseLocation,
+  IMongooseWarehouseProvider,
+} from './model';
+import {
+  Admin,
+  ProjectionObject,
+  Self,
+  User,
+  Warehouse,
+  WarehouseLocation,
+  WarehouseProvider,
+} from './mongoose';
 import { logGAEvent } from './utilities/gapis';
 import { printWarning } from './utilities/log';
 
@@ -26,6 +38,10 @@ export const adminTypeComposer = composeWithMongoose<IMongooseAdmin & Document>(
 export const warehouseLocationTypeComposer = composeWithMongoose<
   IMongooseWarehouseLocation & Document
 >(WarehouseLocation);
+export const warehouseTypeComposer = composeWithMongoose<IMongooseWarehouse & Document>(Warehouse);
+export const warehouseProviderTypeComposer = composeWithMongoose<
+  IMongooseWarehouseProvider & Document
+>(WarehouseProvider);
 
 /* ------------------------------------- GraphQL projection ------------------------------------- */
 

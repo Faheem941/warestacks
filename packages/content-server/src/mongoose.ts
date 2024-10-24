@@ -217,7 +217,7 @@ const warehouseProviderSchema = new mongoose.Schema<IMongooseWarehouseProvider>(
 warehouseProviderSchema.virtual('warehouses', {
   ref: 'Warehouse',
   localField: '_id',
-  foreignField: 'provider',
+  foreignField: 'providerId',
   justOne: false,
 });
 
@@ -239,7 +239,7 @@ const warehouseLocationSchema = new mongoose.Schema<IMongooseWarehouseLocation>(
 warehouseLocationSchema.virtual('warehouses', {
   ref: 'Warehouse',
   localField: '_id',
-  foreignField: 'location',
+  foreignField: 'locationId',
   justOne: false,
 });
 
