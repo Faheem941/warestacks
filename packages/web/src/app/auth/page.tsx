@@ -126,14 +126,14 @@ function Page() {
             label="Email address"
             type="email"
             placeholder="some@example.com"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(value) => setEmail(value)}
           />
           <Input
             id="password"
             label="Password"
             type="password"
             placeholder="******"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(value) => setPassword(value)}
           />
 
           {/* Animated Confirm Password field */}
@@ -150,7 +150,7 @@ function Page() {
                   label="Confirm Password"
                   type="password"
                   placeholder="******"
-                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onChange={(value) => setConfirmPassword(value)}
                 />
               </motion.div>
             )}

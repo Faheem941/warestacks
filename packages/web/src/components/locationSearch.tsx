@@ -1,23 +1,49 @@
 import { IWarehouseWithRegion } from '@dwms/common';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useDebouncedCallback } from 'use-debounce';
+import { useSearchParams } from 'next/navigation';
 import { getLocationsQuery } from '@/apollo/schema/warehouse';
 import Input from './ui/input';
 
 interface LocaitonSearchProps {
   selectedLocation?: IWarehouseWithRegion;
   setSelectedLocation: (value: IWarehouseWithRegion | undefined) => void;
+  variant?: 'default' | 'large';
 }
 
 function LocationSearch({
   selectedLocation = undefined,
   setSelectedLocation,
+  variant = 'large',
 }: LocaitonSearchProps) {
   const [searchText, setSearchText] = useState('');
   const [isShowResult, setIsShowResult] = useState(false);
+  const searchParams = useSearchParams();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [getLocations, { data: locationsData, loading: isLoading }] = useLazyQuery<
+  const queryLocation = searchParams.get('location');
+  const queryLocationData: IWarehouseWithRegion | undefined = useMemo(() => {
+    if (!queryLocation) {
+      return undefined;
+    }
+    const temp = queryLocation.split(', ');
+    return {
+      city: temp[0],
+      region: temp[1],
+    };
+  }, [queryLocation]);
+
+  useEffect(() => {
+    if (!queryLocationData) {
+      return;
+    }
+
+    setSelectedLocation(queryLocationData);
+    setSearchText(`${queryLocationData.city}, ${queryLocationData.region}`);
+  }, [queryLocationData, setSelectedLocation]);
+
+  const [getLocations, { data: locationsData }] = useLazyQuery<
     { getLocations: Array<IWarehouseWithRegion> },
     { searchText?: string }
   >(getLocationsQuery);
@@ -25,26 +51,31 @@ function LocationSearch({
   const debouncedCallback = useDebouncedCallback((value: string) => {
     setIsShowResult(true);
     getLocations({ variables: { searchText: value } });
+    setIsLoading(false);
   }, 1000);
 
   return (
     <div className="relative">
       <Input
         value={searchText}
-        variant="large"
+        variant={variant}
         id="location"
         label="Enter a location"
         placeholder="e.g London, Greater London"
-        onChange={(e) => {
-          const { value } = e.target;
+        onChange={(value) => {
           setSearchText(value);
+          setIsShowResult(false);
           setSelectedLocation(undefined);
+          if (!value.length) {
+            return;
+          }
+          setIsLoading(true);
           debouncedCallback(value);
         }}
         isLoading={isLoading}
       />
       <div
-        className={`absolute top-[6rem] left-0 bg-white  shadow-xl ${locationsData?.getLocations.length && isShowResult && !selectedLocation ? 'h-fit md:w-[30rem] z-10' : 'h-0 w-0 -z-10'} border border-gray-300 rounded-xl flex flex-col`}
+        className={`absolute ${variant === 'default' ? 'top-20' : 'top-24'} left-0 bg-white  shadow-xl ${locationsData?.getLocations.length && isShowResult && !selectedLocation ? 'h-fit w-full z-10' : 'h-0 w-0 -z-10'} border border-gray-300 rounded-xl flex flex-col`}
       >
         {isShowResult &&
           !selectedLocation &&

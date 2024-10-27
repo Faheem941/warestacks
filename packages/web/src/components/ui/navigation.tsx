@@ -48,24 +48,24 @@ function Navbar({ isFixed = true }: NavbarProps) {
     <header className={`${isFixed ? 'sticky' : 'relative'} top-0 z-50 bg-white shadow-md w-full`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-fit py-2">
         <div className="flex-shrink-0">
-          <p className="text-2xl font-semibold text-slate-700">
-            <span className="text-violet-600">DWMS</span>
-          </p>
+          <Link href="/" className="text-3xl font-bold text-violet-600">
+            DWMS
+          </Link>
         </div>
         <div className="hidden md:flex space-x-8 ml-24">
-          <Link href="#features" passHref className="flex flex-col group">
+          <Link href="/#to-rent" passHref className="flex flex-col group">
             <p className="text-gray-600 hover:text-violet-700 transition-all duration-300">
               To rent
             </p>
             <div className="h-[0.1rem] bg-violet-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
-          <Link href="#testimonials" passHref className="flex flex-col group">
+          <Link href="/#features" passHref className="flex flex-col group">
             <p className="text-gray-600 hover:text-violet-700 transition-all duration-300">
               Features
             </p>
             <div className="h-[0.1rem] bg-violet-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
-          <Link href="#integrations" passHref className="flex flex-col group">
+          <Link href="/#about-us" passHref className="flex flex-col group">
             <p className="text-gray-600 hover:text-violet-700 transition-all duration-300">
               About us
             </p>
@@ -130,7 +130,7 @@ function Navbar({ isFixed = true }: NavbarProps) {
       {menuOpen && (
         <div className="md:hidden bg-white shadow-sm absolute w-full">
           <nav className="px-4 pt-4 pb-2 space-y-4">
-            <Link href="#features" passHref>
+            <Link href="/#features" passHref>
               <p className="block text-gray-600 hover:text-violet-700 transition-all duration-300">
                 Features
               </p>
