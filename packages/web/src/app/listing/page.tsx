@@ -1,71 +1,52 @@
 'use client';
 
+import { useLazyQuery } from '@apollo/client';
+import { IWarehouse, IWarehouseWithRegion, WithRequired } from '@dwms/common';
 import { useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useMemo } from 'react';
+import { getWarehousesQuery } from '@/apollo/schema/warehouse';
+import CircularProgress from '@/components/ui/circularProgress';
 import Navbar from '@/components/ui/navigation';
 import WarehouseCard from '@/components/ui/warehouseCard';
 import FilterSection from './filterSection';
 
-const warehouses = [
-  {
-    name: 'Warehouse Plus',
-    distance: '0.4 km from logistic hub',
-    price: 180,
-    rating: 9.4,
-    reviews: 500,
-    badges: ['Badge 1', 'Badge 2'],
-    imageSrc: '/hero.png',
-    ownedBy: 'Secure storage solution',
-    feature: 'Spacious storage area',
-  },
-  {
-    name: 'Warehouse Plus',
-    distance: '0.4 km from logistic hub',
-    price: 180,
-    rating: 9.4,
-    reviews: 500,
-    badges: ['Badge 1', 'Badge 2'],
-    imageSrc: '/hero.png',
-    ownedBy: 'Secure storage solution',
-    feature: 'Spacious storage area',
-  },
-  {
-    name: 'Warehouse Plus',
-    distance: '0.4 km from logistic hub',
-    price: 180,
-    rating: 9.4,
-    reviews: 500,
-    badges: ['Badge 1', 'Badge 2'],
-    imageSrc: '/hero.png',
-    feature: 'Spacious storage area',
-    ownedBy: 'Secure storage solution',
-  },
-  {
-    name: 'Warehouse Plus',
-    distance: '0.4 km from logistic hub',
-    price: 180,
-    rating: 9.4,
-    reviews: 500,
-    badges: ['Badge 1', 'Badge 2'],
-    imageSrc: '/hero.png',
-    feature: 'Spacious storage area',
-    ownedBy: 'Secure storage solution',
-  },
-  {
-    name: 'Warehouse Plus',
-    distance: '0.4 km from logistic hub',
-    price: 180,
-    rating: 9.4,
-    reviews: 500,
-    badges: ['Badge 1', 'Badge 2'],
-    imageSrc: '/hero.png',
-    feature: 'Spacious storage area',
-    ownedBy: 'Secure storage solution',
-  },
-];
-
 function WarehousePage() {
   const searchParams = useSearchParams();
   const location = searchParams.get('location');
+  const locationData: IWarehouseWithRegion | undefined = useMemo(() => {
+    if (!location) {
+      return undefined;
+    }
+    const temp = location.split(', ');
+    return {
+      city: temp[0],
+      region: temp[1],
+    };
+  }, [location]);
+
+  const [getWarehouses, { data: warehouseData, loading: isLoading }] = useLazyQuery<
+    { getWarehouses: Array<WithRequired<IWarehouse, 'provider'>> },
+    { location: IWarehouseWithRegion }
+  >(getWarehousesQuery);
+
+  const fetchWarehouses = useCallback(() => {
+    if (locationData && !isLoading) {
+      getWarehouses({
+        variables: {
+          location: {
+            city: locationData.city,
+            region: locationData.region,
+          },
+        },
+      });
+    }
+  }, [getWarehouses, locationData, isLoading]);
+
+  useEffect(() => {
+    fetchWarehouses();
+  }, [fetchWarehouses]);
+
+  const warehouses = warehouseData?.getWarehouses;
 
   return (
     <>
@@ -79,22 +60,33 @@ function WarehousePage() {
         </div>
 
         {/* Scrollable Warehouse Cards */}
-        <div className="flex flex-col gap-6 pt-8 pb-20 items-center mx-auto">
-          {warehouses.map((warehouse) => (
-            <WarehouseCard
-              key={Math.random()}
-              badges={warehouse.badges}
-              distance={warehouse.distance}
-              feature={warehouse.feature}
-              imageSrc={warehouse.imageSrc}
-              name={warehouse.name}
-              ownedBy={warehouse.ownedBy}
-              price={warehouse.price}
-              rating={warehouse.rating}
-              reviews={warehouse.reviews}
-            />
-          ))}
-        </div>
+        {isLoading || !warehouseData ? (
+          <div className="flex flex-col items-center h-80 justify-center">
+            <CircularProgress />
+          </div>
+        ) : (
+          <div className="flex flex-col gap-6 pt-8 pb-20 items-center mx-auto">
+            {!warehouses ? (
+              <h2>Unable to find any warehouse at this location</h2>
+            ) : (
+              warehouses.map((warehouse) => (
+                <WarehouseCard
+                  key={Math.random()}
+                  badges={warehouse.badges}
+                  distance={warehouse.distanceFromLogisticHub}
+                  feature="warehouse.feature"
+                  imageSrc="/hero.png"
+                  name={warehouse.title}
+                  ownedBy={warehouse.provider.name}
+                  price={warehouse.pricePerDay}
+                  rating={warehouse.rating}
+                  reviews={warehouse.reviewsCount}
+                  isHighRated={warehouse.rating > 4}
+                />
+              ))
+            )}
+          </div>
+        )}
       </div>
     </>
   );

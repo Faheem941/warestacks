@@ -1,7 +1,7 @@
 'use client';
 
 import { useLazyQuery } from '@apollo/client/react/hooks/useLazyQuery';
-import { IWarehouseLocation } from '@dwms/common';
+import { IWarehouseWithRegion } from '@dwms/common';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -14,11 +14,9 @@ function Hero() {
   const router = useRouter();
   const [isShowResult, setIsShowResult] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const [selectedLocation, setSelectedLocation] = useState<
-    Omit<IWarehouseLocation, 'distanceFromLogisticHub' | 'warehouses'> | undefined
-  >();
+  const [selectedLocation, setSelectedLocation] = useState<IWarehouseWithRegion | undefined>();
   const [getLocations, { data: locationsData, loading: isLoading }] = useLazyQuery<
-    { getLocations: Array<Omit<IWarehouseLocation, 'distanceFromLogisticHub' | 'warehouses'>> },
+    { getLocations: Array<IWarehouseWithRegion> },
     { searchText?: string }
   >(getLocationsQuery);
 

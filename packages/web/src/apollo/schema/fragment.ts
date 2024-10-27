@@ -19,3 +19,9 @@ export const selfFragment = gql`
     isOnboardingComplete
   }
 `;
+
+export const warehouseProviderFragment = gql`
+  fragment WarehouseProviderFields on WarehouseProvider {
+    name
+  }
+`;

@@ -10,6 +10,7 @@ export interface IWarehouse {
   location?: IWarehouseLocation;
   providerId: string;
   provider?: IWarehouseProvider;
+  distanceFromLogisticHub?: number;
 }
 
 // warehouse provider
@@ -24,6 +25,8 @@ export interface IWarehouseProvider {
 export interface IWarehouseLocation {
   city: string;
   region: string;
-  distanceFromLogisticHub: number;
+
   warehouses?: IWarehouse[];
 }
+
+export type IWarehouseWithRegion = Omit<IWarehouseLocation, 'warehouses'>;

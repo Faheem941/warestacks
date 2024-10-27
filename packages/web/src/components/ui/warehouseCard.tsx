@@ -4,7 +4,7 @@ import Button from './button';
 
 interface WarehouseCardProps {
   name: string;
-  distance: string;
+  distance?: number;
   price: number;
   rating: number;
   reviews: number;
@@ -12,11 +12,12 @@ interface WarehouseCardProps {
   imageSrc: string;
   ownedBy: string;
   feature: string;
+  isHighRated?: boolean;
 }
 
 function WarehouseCard({
   name,
-  distance,
+  distance = undefined,
   price,
   rating,
   reviews,
@@ -24,6 +25,7 @@ function WarehouseCard({
   imageSrc,
   ownedBy,
   feature,
+  isHighRated = false,
 }: WarehouseCardProps) {
   return (
     <div className="flex p-4 border bg-white rounded-3xl shadow-sm transition-all duration-300 hover:border-violet-700 hover:shadow-lg w-[70vw] max-w-6xl">
@@ -35,8 +37,8 @@ function WarehouseCard({
         height={1100}
       />
       <div className="flex flex-col">
-        <h2 className="text-4xl font-semibold text-slate-700">{name}</h2>
-        <p className="text-neutral-500 mt-2">{distance}</p>
+        <h2 className="text-3xl font-semibold text-slate-700">{name}</h2>
+        {distance && <p className="text-neutral-500 mt-2">{distance} Km from logistics</p>}
         <p className="text-neutral-500">Flexible terms - Includes handling</p>
         <p className="text-slate-800 mt-8">{feature}</p>
         <p className="text-neutral-500">{ownedBy}</p>
@@ -54,7 +56,7 @@ function WarehouseCard({
       <div className="flex flex-col items-end justify-start gap-4 ml-auto">
         <div className="flex items-center gap-x-3">
           <div className="flex flex-col items-center">
-            <p className="text-black font-semibold">Highly Rated</p>
+            {isHighRated && <p className="text-black font-semibold">Highly Rated</p>}
             <button type="button" className="text-violet-700 text-sm underline underline-offset-2">
               {reviews} Reviews
             </button>

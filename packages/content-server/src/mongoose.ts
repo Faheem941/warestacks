@@ -231,7 +231,6 @@ const warehouseLocationSchema = new mongoose.Schema<IMongooseWarehouseLocation>(
   {
     city: { type: String, required: true },
     region: { type: String, required: true },
-    distanceFromLogisticHub: { type: Number, required: true },
   },
   { timestamps: true, autoCreate: false },
 );
@@ -259,6 +258,7 @@ const warehouseSchema = new mongoose.Schema<IMongooseWarehouse>(
     reviewsCount: { type: Number, default: 0 },
     providerId: { type: mongoose.Schema.Types.ObjectId, ref: 'WarehouseProvider', required: true },
     locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'WarehouseLocation', required: true },
+    distanceFromLogisticHub: { type: Number },
   },
   { timestamps: true, autoCreate: false },
 );

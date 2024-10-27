@@ -1,4 +1,4 @@
-import { IWarehouseLocation } from '@dwms/common';
+import { IWarehouseWithRegion } from '@dwms/common';
 import { schemaComposer, toInputType } from 'graphql-compose';
 import {
   createResolver,
@@ -7,9 +7,9 @@ import {
   warehouseProviderTypeComposer,
   warehouseTypeComposer,
 } from '../graphql';
+import { IMongooseWarehouse, IMongooseWarehouseProvider } from '../model';
 import { WarehouseLocation, optimized } from '../mongoose';
 import { normalizeNoSpace } from '../utilities/text';
-import { IMongooseWarehouse, IMongooseWarehouseProvider } from '../model';
 
 /* ----------------------------------------- Resolvers ------------------------------------------ */
 const locationTypeComposer = schemaComposer.createObjectTC({
@@ -67,9 +67,7 @@ warehouseTypeComposer.addResolver({
   resolve: createResolver(
     'get all warehouses based on a location',
     async ({ args, projection, info }, resolve) => {
-      const {
-        location,
-      }: { location: Omit<IWarehouseLocation, 'warehouses' | 'distanceFromLogisticHub'> } = args;
+      const { location }: { location: IWarehouseWithRegion } = args;
 
       const providerProjections = getSubfieldProjection<
         IMongooseWarehouse,
