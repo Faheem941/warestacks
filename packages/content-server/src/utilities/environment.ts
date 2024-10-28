@@ -10,15 +10,12 @@ export const isStaging = process.env.IS_STAGING === 'true';
 // For testing over the network, change localhost to the address of your computer in the network
 const localServerHostname = 'localhost';
 
-const webServerHostname = isProduction && !isProductionTest ? 'dwms.co' : localServerHostname;
-export const webHostname = isStaging ? 'staging.dwms.co' : webServerHostname;
+const webServerHostname =
+  isProduction && !isProductionTest ? 'dwms-project-web.vercel.app/' : localServerHostname;
+export const webHostname = isStaging ? 'staging.dwms-project-web.vercel.app/' : webServerHostname;
 export const webDomain = hostnameToDomain(webHostname);
 
 const contentServerHostname = isStaging ? 'content-staging.dwms.co' : 'content.dwms.co';
-
-// Add US East Stream Chat servers so that we can use their webhooks
-// https://getstream.io/chat/docs/react/webhooks_overview/?language=javascript#whitelisting-stream-domains
-const streamChatServers = ['34.225.10.29', '34.198.125.61', '52.22.78.160', '3.215.161.238'];
 
 export const webUrl = `https://${webHostname}`;
 export const contentServerUrl = `https://${contentServerHostname}`;
@@ -33,11 +30,7 @@ export const developmentOrigins = [
   'https://studio.apollographql.com',
 ];
 
-export const productionOrigins = [
-  `https://${webHostname}`,
-
-  ...(!isStaging ? ['https://www.dwms.co', ...streamChatServers] : []),
-];
+export const productionOrigins = [`https://${webHostname}`];
 
 export function hostnameToDomain(hostname: string) {
   return hostname.split('.').slice(-2).join('.');
