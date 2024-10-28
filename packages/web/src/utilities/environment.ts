@@ -4,7 +4,7 @@ export const isProduction = process.env.NODE_ENV === 'production';
 export const localServerHostname = 'localhost';
 
 // Content server
-const publicContentServerHostname = 'content.dwms.co';
+const publicContentServerHostname = 'speedy-toolbox-439622-b0.nw.r.appspot.com';
 
 export const contentServerHostname = isProduction
   ? publicContentServerHostname
