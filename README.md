@@ -9,12 +9,10 @@ Inside this repository, you can find all projects related to template. Each proj
 - [Projects](#projects)
 - [Setting up the Environment](#setting-up-the-environment)
   - [Production Stack](#production-stack)
-  - [Cross-platform Flutter Project](#cross-platform-flutter-project)
 - [Contributing to a Project](#contributing-to-a-project)
 - [Deployment to Google Cloud](#deployment-to-google-cloud)
 - [Environment Structure](#environment-structure)
   - [Configuration Files](#configuration-files)
-  - [Scripts](#scripts)
 
 ## Projects
 
@@ -22,7 +20,7 @@ For detailed description of each project, see the README in their corresponding 
 
 - [@dwms/web](packages/web#readme)
 
-  Client-side React web application for template to be used by the end user in the browser.
+  Client-side NextJS web application for template to be used by the end user in the browser.
 
 - [@dwms/content-server](packages/content-server#readme)
 
@@ -51,26 +49,12 @@ If you are working on the service stack used in production (website with content
 
    ```bash
    gcloud auth login
-   gcloud config set project dwms-403519
+   gcloud config set project speedy-toolbox-439622-b0
    gcloud auth application-default login
-   gcloud auth application-default set-quota-project dwms-403519
+   gcloud auth application-default set-quota-project speedy-toolbox-439622-b0
    ```
 
 1. See [individual project setup instructions](#projects) on how to set them up for development
-
-### Cross-platform Flutter Project
-
-These instructions are for setting up the experimental `@dwms/app` for development.
-
-1. Install [Flutter](https://flutter.dev/docs/get-started/install)
-1. [Set up Flutter development](https://flutter.dev/docs/get-started/editor) with the editor of your choice
-1. Run `flutter doctor -v` to check your setup
-1. After cloning the repository, open and edit the project
-1. If you are using an Android emulator or physical device, you need to run `adb reverse tcp:8080 tcp:8080` to forward the port of the local server.
-1. On some emulators the session doesn't load. For now it's advised to use an emulator with API 30 (Android 11) if you have this problem.
-1. Use run to debug the application or use `flutter run --release` to compile and test a production-ready build
-
-_Note: As some dependencies (e.g. Dio) doesn't support the web platform yet, you will need to use an emulator or a physical Android or iOS device to contribute to this project._
 
 ## Contributing to a Project
 
@@ -116,8 +100,3 @@ In addition to the projects (already mentioned above) and editor configurations,
 - `.gitignore` - A GitIgnore file for the repository. In addition to this, each project includes its own configuration file.
 - `package.json` - Contains development dependencies (e.g. ESLint plugins) and the declaration of projects within the workspace (used by Yarn to intelligently install dependencies)
 - `yarn.lock` - Automatically generated file for locking the exact version of all the dependencies (and their dependencies) within the workspace to be able to use the same version across developers' environments and also in production, minimizing the differences between setups and the errors resulting from them
-
-### Scripts
-
-- `upgrade.js` - ~~Used to upgrade all the dependencies of a project to their latest version ignoring their version specifier in the `package.json` file. To use it, change into the project directory and run the script using Node (e.g. `node ../upgrade.js`). You can also exclude dependencies from the upgrade by adding them to the `ignoredDependencies` array at the beginning of the upgrade script.~~
-  Prefer `yarn upgrade-interactive [--latest]` to upgrade project dependencies instead. **Always test if the upgrade broke something** and if it did, fix it before making a commit.

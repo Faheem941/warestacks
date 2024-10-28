@@ -16,7 +16,6 @@ In production, it is deployed in a [flexible App Engine environment](https://clo
 
 - [Setting Up](#setting-up)
 - [Deployment](#deployment)
-- [Project Structure](#project-structure)
 
 ## Setting Up
 
@@ -53,18 +52,3 @@ To connect to the production database instead of the local one, run `yarn danger
 ## Deployment
 
 See instructions in the [readme of the repository](../../README.md#deployment-to-google-cloud).
-
-## Project Structure
-
-- `src` - Source code of the server
-  - `assets` - static assets used by the webserver, like email templates and data files
-  - `mutations` - Definitions of GraphQL mutations
-  - `queries` - Definitions of GraphQL queries
-  - `api.js` - Contains the setup and definition of the API interface (registered queries, mutations, subscriptions and virtual fields)
-  - `error.js` - Contains the error and promise rejection handling event listeners
-  - `graphql.js` - Contains the GraphQL type composers and other GraphQL utility functions
-  - `log.js` - Contains all logging logic
-  - `main.js` - Main entry for the program; starts the webserver
-  - `model.js` - Contains the Mongoose Schema definitions and other MongoDB utility functions
-  - `webserver.js` - Webserver definition and setup
-- `types` - Custom TypeScript types for the content server

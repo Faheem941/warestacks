@@ -1,4 +1,4 @@
-#!include:.gitignore
+# !include:.gitignore
 
 .git/
 .github/
@@ -7,14 +7,18 @@
 README.md
 
 # gcloudignore doesn't respect .gcloudignore files in subdirectories
+
 packages/content-server/build/
 packages/content-server/tls/
 packages/content-server/.env/
+packages/content-server/.env
 
 # Exclude packages not needed for deployment
+
 packages/app-common/
 packages/web/
 
 # Web-specific ignores
+
 packages/web/.next/
 packages/web/app/
