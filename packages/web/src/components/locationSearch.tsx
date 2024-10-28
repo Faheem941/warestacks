@@ -1,5 +1,5 @@
 import { IWarehouseWithRegion } from '@dwms/common';
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useDebouncedCallback } from 'use-debounce';
 import { useSearchParams } from 'next/navigation';
@@ -97,4 +97,18 @@ function LocationSearch({
   );
 }
 
-export default LocationSearch;
+export default function LocationSearchSuspense({
+  selectedLocation = undefined,
+  setSelectedLocation,
+  variant = 'large',
+}: LocaitonSearchProps) {
+  return (
+    <Suspense>
+      <LocationSearch
+        setSelectedLocation={setSelectedLocation}
+        selectedLocation={selectedLocation}
+        variant={variant}
+      />
+    </Suspense>
+  );
+}
