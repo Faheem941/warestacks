@@ -23,16 +23,16 @@ const problemData = [
 
 function Problem() {
   return (
-    <div className="w-full items-center flex justify-center">
+    <div className="w-full items-center flex justify-center px-14">
       <div className="bg-white border border-neutral-100 max-w-[100rem] w-full h-auto px-14 py-10 rounded-3xl relative bottom-24 shadow-xl flex flex-col">
         <p className="bg-secondary px-5 py-2 text-primary w-fit rounded-xl font-medium">
           THE PROBLEM
         </p>
         <div className="flex flex-row mt-4">
-          <h2 className="text-header-color text-4xl w-[45rem] font-semibold">
+          <h2 className="text-header-color text-3xl w-[45rem] font-semibold">
             Fragmented Operations, Inventory Inefficiencies, Missed Opportunities
           </h2>
-          <p className="w-[45rem] text-xl text-body font-light content-center">
+          <p className="w-[45rem] text-body font-light content-center">
             The warehouse management industry faces costly inefficiencies, with outdated systems and
             fragmented processes hindering productivity and growth.
           </p>

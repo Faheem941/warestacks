@@ -11,7 +11,7 @@ function Pricing() {
         features for growth.
       </p>
       <div className="max-w-[100rem] w-full h-auto px-14 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        <div className="bg-white bg-opacity-10 w-[30rem] h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
+        <div className="bg-white bg-opacity-10 w-auto h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
           <h3 className="text-white text-2xl font-semibold">Basic</h3>
           <p className="text-white text-opacity-80">
             Ideal small businesses or startups with minimal warehousing needs.
@@ -55,7 +55,7 @@ function Pricing() {
             </div>
           </div>
         </div>
-        <div className="bg-secondary w-[30rem] h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
+        <div className="bg-secondary w-auto h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
           <h3 className="text-primary text-2xl font-semibold">Professional</h3>
           <p className="text-primary text-opacity-80">
             Medium-sized businesses with growing warehousing and advanced tools.
@@ -110,7 +110,7 @@ function Pricing() {
             </div>
           </div>
         </div>
-        <div className="bg-primary w-[30rem] h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
+        <div className="bg-primary w-auto h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
           <h3 className="text-white text-2xl font-semibold">Enterprise</h3>
           <p className="text-white text-opacity-80">
             Large enterprises with extensive warehousing requirements and a need for full platform

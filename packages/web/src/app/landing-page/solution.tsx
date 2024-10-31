@@ -55,7 +55,7 @@ function Solution() {
         {features.map((feature) => (
           <div
             key={Math.random()}
-            className="bg-white bg-opacity-10 w-[30rem] rounded-3xl px-6 py-5 flex-col gap-y-2 flex items-start border border-transparent hover:border-secondary transition-all duration-300 hover:shadow-xl"
+            className="bg-white bg-opacity-10 w-auto rounded-3xl px-6 py-5 flex-col gap-y-2 flex items-start border border-transparent hover:border-secondary transition-all duration-300 hover:shadow-xl"
           >
             <div className="relative">
               <Image
