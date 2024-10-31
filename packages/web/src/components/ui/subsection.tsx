@@ -27,7 +27,7 @@ function SubSection({
       <div className="md:container ml-0 mr-0 md:ml-auto md:mr-auto flex flex-col md:flex-row py-10 md:pt-20 md:pb-5 text-center md:text-start gap-8">
         <div className="flex flex-col md:w-2/3 px-4 self-center">
           {subHeader ? (
-            <p className="mb-4 text-base text-violet-700 self-start text-start bg-violet-100 px-5 py-2 rounded-xl flex flex-row items-center">
+            <p className="mb-4 text-base text-primary self-start text-start bg-violet-100 px-5 py-2 rounded-xl flex flex-row items-center">
               <span className="bg-violet-700 w-2 h-2 rounded-full mr-2" />
               {subHeader}
             </p>
@@ -36,7 +36,7 @@ function SubSection({
           )}
 
           <h2 className="text-slate-700 text-2xl font-bold md:text-5xl lg:text-4xl md:mb-4 self-start text-start">
-            {highlightTitle ? <span className="text-violet-700">{highlightTitle} </span> : <div />}
+            {highlightTitle ? <span className="text-primary-700">{highlightTitle} </span> : <div />}
             {title}
           </h2>
           {children}
@@ -69,15 +69,14 @@ function SubSection({
       </div>
       <div className="flex flex-col md:w-2/3 px-4 self-center">
         {subHeader ? (
-          <p className="mb-4 text-base text-violet-700 self-start text-start bg-violet-100 px-5 py-2 rounded-xl flex flex-row items-center">
-            <span className="bg-violet-700 w-2 h-2 rounded-full mr-2" />
+          <p className="mb-4 text-base text-primary self-start text-start bg-secondary px-5 py-2 rounded-xl flex flex-row items-center">
             {subHeader}
           </p>
         ) : (
           <div />
         )}
-        <h2 className="text-slate-700 text-2xl font-bold md:text-5xl lg:text-4xl md:mb-4 self-start text-start">
-          {highlightTitle ? <span className="text-violet-700">{highlightTitle} </span> : <div />}
+        <h2 className="text-header-color text-2xl font-bold md:text-5xl lg:text-4xl md:mb-4 self-start text-start">
+          {highlightTitle ? <span className="text-primary">{highlightTitle} </span> : <div />}
           {title}
         </h2>
         {children}
