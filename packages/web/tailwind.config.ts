@@ -10,6 +10,14 @@ const config = {
   ],
   prefix: '',
   theme: {
+    extend: {
+      colors: {
+        primary: '#0B363C',
+        secondary: '#E0FFC7',
+        'header-color': '#322644',
+        body: '#777C90',
+      },
+    },
     container: {
       center: true,
       padding: '2rem',

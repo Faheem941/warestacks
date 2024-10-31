@@ -31,8 +31,9 @@ export default function Button({
   };
 
   const typeStyles: Record<ButtonType, string> = {
-    default: 'bg-violet-700 text-white disabled:bg-violet-300',
-    outlined: 'bg-white border border-violet-700 text-violet-700',
+    default:
+      'bg-primary text-white disabled:bg-primary disabled:opacity-40 disabled:cursor-default',
+    outlined: 'bg-white border border-primary text-primary',
     alternative: 'border border-slate-700 text-slate-700',
   };
 

@@ -13,7 +13,7 @@ function Hero() {
   const [selectedLocation, setSelectedLocation] = useState<IWarehouseWithRegion | undefined>();
 
   return (
-    <div id="hero" className="w-full h-[70vh] items-start z-10 bg-violet-100 relative">
+    <div id="hero" className="w-full h-[70vh] items-start z-10 bg-green-100 relative">
       <div className="z-0">
         <Image
           loading="eager"
@@ -24,13 +24,13 @@ function Hero() {
           alt=""
         />
       </div>
-      <div className="bg-violet-200 absolute top-0 z-10 w-full h-full opacity-70" />
+      <div className="bg-primary absolute top-0 z-10 w-full h-full opacity-40" />
       <div className="flex flex-col items-center p-4 pt-10 md:p-20 justify-between z-20">
         <div className="flex flex-col z-30 justify-center items-center mt-10">
-          <h1 className="text-2xl md:text-5xl relative font-semibold text-slate-700 dark:text-white font-sans tracking-tight md:text-start text-center">
-            Global <span className="text-violet-800">Warehouse Management</span> Simplified
+          <h1 className="text-2xl md:text-5xl relative font-semibold text-white font-sans tracking-tight md:text-start text-center">
+            Global <span className="text-secondary">Warehouse Management</span> Simplified
           </h1>
-          <p className="w-auto md:w-[35rem] text-black text-center mt-5">
+          <p className="w-auto md:w-[35rem] text-white text-center mt-5">
             Efficiently manage your warehouse, reduce costs, and maximize space utilization across a
             global network.
           </p>
