@@ -27,8 +27,8 @@ function SubSection({
       <div className="md:container ml-0 mr-0 md:ml-auto md:mr-auto flex flex-col md:flex-row py-10 md:pt-20 md:pb-5 text-center md:text-start gap-8">
         <div className="flex flex-col md:w-2/3 px-4 self-center">
           {subHeader ? (
-            <p className="mb-4 text-base text-primary self-start text-start bg-violet-100 px-5 py-2 rounded-xl flex flex-row items-center">
-              <span className="bg-violet-700 w-2 h-2 rounded-full mr-2" />
+            <p className="mb-4 text-base text-primary self-start text-start bg-green-100 px-5 py-2 rounded-xl flex flex-row items-center">
+              <span className="bg-green-700 w-2 h-2 rounded-full mr-2" />
               {subHeader}
             </p>
           ) : (

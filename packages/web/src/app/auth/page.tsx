@@ -106,16 +106,16 @@ function Page() {
 
   if (isSelfLoading || self) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-violet-600">
+      <div className="flex items-center justify-center min-h-screen bg-green-600">
         <CircularProgress />
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-violet-600">
+    <div className="flex items-center justify-center min-h-screen bg-green-600">
       <div className="bg-white p-8 rounded-[2rem] shadow-lg w-full max-w-md">
-        <h2 className="text-4xl font-bold text-violet-700 text-center mb-4">DWMS</h2>
+        <h2 className="text-4xl font-bold text-green-700 text-center mb-4">DWMS</h2>
         <p className="text-center text-neutral-600 mb-6">
           <span className="text-slate-800 text-lg font-semibold">Welcome</span> <br /> Login to DWMS
           to continue using it
@@ -158,7 +158,7 @@ function Page() {
 
           {!isSignUp && (
             <div className="flex justify-between items-center">
-              <button type="button" className="text-sm text-violet-600 hover:underline">
+              <button type="button" className="text-sm text-green-600 hover:underline">
                 Forgot password?
               </button>
             </div>
@@ -177,7 +177,7 @@ function Page() {
             {isSignUp ? `Already` : `Don't`} have an account?{' '}
             <button
               type="button"
-              className="text-violet-600 hover:underline"
+              className="text-green-600 hover:underline"
               onClick={() => setIsSignUp(!isSignUp)}
             >
               {isSignUp ? 'Login' : 'Sign up'}

@@ -48,28 +48,28 @@ function Navbar({ isFixed = true }: NavbarProps) {
     <header className={`${isFixed ? 'sticky' : 'relative'} top-0 z-50 bg-white shadow-md w-full`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-fit py-2">
         <div className="flex-shrink-0">
-          <Link href="/" className="text-3xl font-bold text-violet-600">
+          <Link href="/" className="text-3xl font-bold text-green-600">
             DWMS
           </Link>
         </div>
         <div className="hidden md:flex space-x-8 ml-24">
           <Link href="/#to-rent" passHref className="flex flex-col group">
-            <p className="text-gray-600 hover:text-violet-700 transition-all duration-300">
+            <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
               To rent
             </p>
-            <div className="h-[0.1rem] bg-violet-700 group-hover:w-full w-0 transition-all duration-300" />
+            <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
           <Link href="/#features" passHref className="flex flex-col group">
-            <p className="text-gray-600 hover:text-violet-700 transition-all duration-300">
+            <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
               Features
             </p>
-            <div className="h-[0.1rem] bg-violet-700 group-hover:w-full w-0 transition-all duration-300" />
+            <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
           <Link href="/#about-us" passHref className="flex flex-col group">
-            <p className="text-gray-600 hover:text-violet-700 transition-all duration-300">
+            <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
               About us
             </p>
-            <div className="h-[0.1rem] bg-violet-700 group-hover:w-full w-0 transition-all duration-300" />
+            <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
         </div>
         <div className="hidden md:flex items-center space-x-4">
@@ -93,7 +93,7 @@ function Navbar({ isFixed = true }: NavbarProps) {
             }}
           />
         </div>
-        <div className="md:hidden flex items-center justify-center text-gray-600 hover:text-violet-700 transition-all duration-300">
+        <div className="md:hidden flex items-center justify-center text-gray-600 hover:text-green-700 transition-all duration-300">
           <button type="button" onClick={() => setMenuOpen(!menuOpen)}>
             {!menuOpen ? (
               <svg
@@ -131,17 +131,17 @@ function Navbar({ isFixed = true }: NavbarProps) {
         <div className="md:hidden bg-white shadow-sm absolute w-full">
           <nav className="px-4 pt-4 pb-2 space-y-4">
             <Link href="/#features" passHref>
-              <p className="block text-gray-600 hover:text-violet-700 transition-all duration-300">
+              <p className="block text-gray-600 hover:text-green-700 transition-all duration-300">
                 Features
               </p>
             </Link>
             <Link href="#testimonials" passHref>
-              <p className="block text-gray-600 hover:text-violet-700 transition-all duration-300">
+              <p className="block text-gray-600 hover:text-green-700 transition-all duration-300">
                 Testimonials
               </p>
             </Link>
             <Link href="#integrations" passHref>
-              <p className="block text-gray-600 hover:text-violet-700 transition-all duration-300">
+              <p className="block text-gray-600 hover:text-green-700 transition-all duration-300">
                 Integrations
               </p>
             </Link>

@@ -32,8 +32,8 @@ export default function Input({
   // Classes for default and large variants
   const inputClasses =
     variant === 'large'
-      ? 'bg-white border border-gray-300 text-neutral-600 text-base rounded-2xl focus:outline-none focus:ring-violet-500 focus:border-violet-500 block w-full p-4 pr-10' // Added padding-right for loader space
-      : 'bg-white border border-gray-300 text-neutral-500 text-sm rounded-xl focus:outline-none focus:ring-violet-500 focus:border-violet-500 block w-full p-3 pr-10'; // Added padding-right for loader space
+      ? 'bg-white border border-gray-300 text-neutral-600 text-base rounded-2xl focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-4 pr-10' // Added padding-right for loader space
+      : 'bg-white border border-gray-300 text-neutral-500 text-sm rounded-xl focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-3 pr-10'; // Added padding-right for loader space
 
   const labelClasses =
     variant === 'large'
@@ -93,7 +93,7 @@ export default function Input({
             <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
               <svg
                 aria-hidden="true"
-                className="w-6 h-6 animate-spin text-neutral-300 fill-violet-700"
+                className="w-6 h-6 animate-spin text-neutral-300 fill-green-700"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

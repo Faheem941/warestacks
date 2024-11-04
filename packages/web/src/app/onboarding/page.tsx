@@ -23,13 +23,13 @@ function Page() {
   return (
     <>
       <Navbar />
-      <div className="flex items-center justify-center min-h-[90vh] bg-violet-50 bg-opacity-40">
+      <div className="flex items-center justify-center min-h-[90vh] bg-green-50 bg-opacity-40">
         {isSelfLoading ? (
           <CircularProgress />
         ) : (
           <div className="w-full max-w-3xl flex flex-col items-center">
             <h1 className="text-7xl font-bold text-slate-700 text-center mb-4">
-              Tell Us About <span className="text-violet-600">Yourself</span>
+              Tell Us About <span className="text-green-600">Yourself</span>
             </h1>
             <div className="max-w-xl">
               <p className="text-center text-neutral-500 mb-6">
@@ -49,14 +49,14 @@ function Page() {
                     id="link-checkbox"
                     type="checkbox"
                     value=""
-                    className="w-7 rounded-lg h-7 accent-violet-600 text-violet-600 bg-white border-gray-300 focus:ring-violet-500 focus:ring-2 "
+                    className="w-7 rounded-lg h-7 accent-green-600 text-green-600 bg-white border-gray-300 focus:ring-green-500 focus:ring-2 "
                   />
                   <label
                     htmlFor="link-checkbox"
                     className="ms-2 text-base font-medium text-neutral-600 dark:text-gray-300"
                   >
                     I agree with the{' '}
-                    <a href="/terms" className="text-violet-600 hover:underline">
+                    <a href="/terms" className="text-green-600 hover:underline">
                       terms and conditions
                     </a>
                     .

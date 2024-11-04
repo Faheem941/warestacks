@@ -4,7 +4,7 @@ function CircularProgress() {
   return (
     <svg
       aria-hidden="true"
-      className="transition-all duration-700 ease-in-out group-hover:text-font group-hover:text-opacity-20 group-hover:fill-violet-700 w-16 h-16 animate-spin text-violet-200  fill-violet-700"
+      className="transition-all duration-700 ease-in-out group-hover:text-font group-hover:text-opacity-20 group-hover:fill-green-700 w-16 h-16 animate-spin text-green-200  fill-green-700"
       viewBox="0 0 100 101"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

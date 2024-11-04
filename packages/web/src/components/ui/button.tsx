@@ -48,7 +48,7 @@ export default function Button({
       <div role="status" className={`${isLoading ? 'block' : 'hidden'}`}>
         <svg
           aria-hidden="true"
-          className={`transition-all duration-700 ease-in-out w-6 h-6 animate-spin text-font text-opacity-20 ${type === 'outlined' ? 'fill-violet-50' : 'fill-violet-700'}`}
+          className={`transition-all duration-700 ease-in-out w-6 h-6 animate-spin text-font text-opacity-20 ${type === 'outlined' ? 'fill-green-50' : 'fill-green-700'}`}
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

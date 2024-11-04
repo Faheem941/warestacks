@@ -28,7 +28,7 @@ function WarehouseCard({
   isHighRated = false,
 }: WarehouseCardProps) {
   return (
-    <div className="flex p-4 border bg-white rounded-3xl shadow-sm transition-all duration-300 hover:border-violet-700 hover:shadow-lg w-[70vw] max-w-6xl">
+    <div className="flex p-4 border bg-white rounded-3xl shadow-sm transition-all duration-300 hover:border-green-700 hover:shadow-lg w-[70vw] max-w-6xl">
       <Image
         src={imageSrc}
         alt={name}
@@ -37,7 +37,7 @@ function WarehouseCard({
         height={1100}
       />
       <div className="flex flex-col">
-        <h2 className="text-3xl font-semibold text-slate-700">{name}</h2>
+        <h2 className="text-2xl font-semibold text-slate-700 text-clip">{name}</h2>
         {distance && <p className="text-neutral-500 mt-2">{distance} Km from logistics</p>}
         <p className="text-neutral-500">Flexible terms - Includes handling</p>
         <p className="text-slate-800 mt-8">{feature}</p>
@@ -57,11 +57,11 @@ function WarehouseCard({
         <div className="flex items-center gap-x-3">
           <div className="flex flex-col items-center">
             {isHighRated && <p className="text-black font-semibold">Highly Rated</p>}
-            <button type="button" className="text-violet-700 text-sm underline underline-offset-2">
+            <button type="button" className="text-green-700 text-sm underline underline-offset-2">
               {reviews} Reviews
             </button>
           </div>
-          <div className="bg-violet-600 text-white rounded-full p-4 flex items-center justify-center text-xl font-bold">
+          <div className="bg-green-600 text-white rounded-full p-4 flex items-center justify-center text-xl font-bold">
             {rating}
           </div>
         </div>
