@@ -8,7 +8,7 @@ import {
   warehouseTypeComposer,
 } from '../graphql';
 import { IMongooseWarehouse, IMongooseWarehouseProvider } from '../model';
-import { WarehouseLocation, optimized } from '../mongoose';
+import { Warehouse, WarehouseLocation, optimized } from '../mongoose';
 import { normalizeNoSpace } from '../utilities/text';
 
 /* ----------------------------------------- Resolvers ------------------------------------------ */
@@ -62,39 +62,59 @@ warehouseTypeComposer.addResolver({
   name: 'getWarehouses',
   args: {
     location: { type: toInputType(locationTypeComposer).getTypeNonNull() },
+    minPrice: 'Float',
+    maxPrice: 'Float',
   },
   type: warehouseTypeComposer.getTypePlural(),
   resolve: createResolver(
     'get all warehouses based on a location',
     async ({ args, projection, info }, resolve) => {
-      const { location }: { location: IWarehouseWithRegion } = args;
+      const {
+        location,
+        minPrice = 50,
+        maxPrice = 1000,
+      }: { location: IWarehouseWithRegion; minPrice: number; maxPrice: number } = args;
 
       const providerProjections = getSubfieldProjection<
         IMongooseWarehouse,
         IMongooseWarehouseProvider
       >(info, warehouseTypeComposer, 'provider', warehouseProviderTypeComposer);
 
-      const result = await optimized(
+      const locationResult = await optimized(
         WarehouseLocation.findOne({
           $or: [{ city: location.city }, { region: location.region }],
-        }).populate([
-          {
-            path: 'warehouses',
-            model: 'Warehouse',
-            select: projection,
-            options: { lean: true },
-            populate: {
-              path: 'provider',
-              model: 'WarehouseProvider',
-              select: providerProjections,
-              options: { lean: true },
-            },
-          },
-        ]),
-        ['warehouses'],
+        }),
+        '_id',
       );
 
-      resolve(result?.warehouses);
+      if (!locationResult) {
+        resolve([]);
+        return;
+      }
+
+      const warehouses = optimized(
+        Warehouse.find({
+          locationId: locationResult._id,
+          $and: [
+            {
+              pricePerDay: { $gte: minPrice },
+            },
+            {
+              pricePerDay: { $lte: maxPrice },
+            },
+          ],
+        }).populate([
+          {
+            path: 'provider',
+            model: 'WarehouseProvider',
+            select: providerProjections,
+            options: { lean: true },
+          },
+        ]),
+        projection,
+      );
+
+      resolve(warehouses);
     },
     { isAuthenticated: false },
   ),

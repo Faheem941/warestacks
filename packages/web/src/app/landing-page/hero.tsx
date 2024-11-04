@@ -47,7 +47,7 @@ function Hero() {
               isDisabled={!selectedLocation}
               onClick={() =>
                 router.push(
-                  `/listing?location=${selectedLocation?.city}, ${selectedLocation?.region}`,
+                  `/listing?location=${selectedLocation?.city}, ${selectedLocation?.region}&minPrice=50&maxPrice=1000`,
                 )
               }
             />

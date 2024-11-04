@@ -13,6 +13,8 @@ import FilterSection from './filterSection';
 function WarehousePage() {
   const searchParams = useSearchParams();
   const location = searchParams.get('location');
+  const minPrice = searchParams.get('minPrice');
+  const maxPrice = searchParams.get('maxPrice');
   const locationData: IWarehouseWithRegion | undefined = useMemo(() => {
     if (!location) {
       return undefined;
@@ -26,7 +28,7 @@ function WarehousePage() {
 
   const [getWarehouses, { data: warehouseData, loading: isLoading }] = useLazyQuery<
     { getWarehouses: Array<WithRequired<IWarehouse, 'provider'>> },
-    { location: IWarehouseWithRegion }
+    { location: IWarehouseWithRegion; minPrice?: number; maxPrice?: number }
   >(getWarehousesQuery);
 
   const fetchWarehouses = useCallback(() => {
@@ -37,10 +39,12 @@ function WarehousePage() {
             city: locationData.city,
             region: locationData.region,
           },
+          ...(minPrice ? { minPrice: parseFloat(minPrice) } : []),
+          ...(maxPrice ? { maxPrice: parseFloat(maxPrice) } : []),
         },
       });
     }
-  }, [getWarehouses, locationData, isLoading]);
+  }, [locationData, isLoading, getWarehouses, minPrice, maxPrice]);
 
   useEffect(() => {
     fetchWarehouses();
@@ -66,8 +70,8 @@ function WarehousePage() {
           </div>
         ) : (
           <div className="flex flex-col gap-6 pt-8 pb-20 items-center mx-auto">
-            {!warehouses ? (
-              <h2>Unable to find any warehouse at this location</h2>
+            {!warehouses || !warehouses.length ? (
+              <h2>Unable to find any warehouse at this location or price</h2>
             ) : (
               warehouses.map((warehouse) => (
                 <WarehouseCard

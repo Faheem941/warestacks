@@ -12,8 +12,11 @@ function FilterSection() {
     undefined,
   );
 
+  const [minPrice, setMinPrice] = useState('50');
+  const [maxPrice, setMaxPrice] = useState('1000');
+
   return (
-    <div className="flex items-center gap-4 p-4 px-10">
+    <div className="flex items-center gap-4 p-4 px-20">
       <div className="w-[70rem]">
         <LocationSearch
           setSelectedLocation={setSelectedLocation}
@@ -22,14 +25,33 @@ function FilterSection() {
         />
       </div>
       <Input id="size" label="Warehouse Size" placeholder="100 meter square" />
-      <Input id="price" label="Price" placeholder="$100 per day" />
-      <Button text="Filters" type="outlined" />
+      <Input
+        id="price"
+        label="Min Price"
+        placeholder="$50 per day"
+        type="number"
+        value={minPrice.toString()}
+        onChange={(e) => setMinPrice(e)}
+      />
+      <Input
+        id="price"
+        label="Max Price"
+        placeholder="$1000 per day"
+        type="number"
+        value={maxPrice.toString()}
+        onChange={(e) => setMaxPrice(e)}
+      />
+      {/* <Button text="Filters" type="outlined" /> */}
       <Button
         text="Search"
         isDisabled={!selectedLocation}
-        onClick={() =>
-          router.replace(`/listing?location=${selectedLocation?.city}, ${selectedLocation?.region}`)
-        }
+        onClick={() => {
+          const dataMinPrice = minPrice.length ? minPrice : '50';
+          const dataMaxPrice = maxPrice.length ? maxPrice : '1000';
+          router.replace(
+            `/listing?location=${selectedLocation?.city}, ${selectedLocation?.region}&minPrice=${dataMinPrice}&maxPrice=${dataMaxPrice}`,
+          );
+        }}
       />
     </div>
   );
