@@ -3,7 +3,7 @@ import SubSection from '@/components/ui/subsection';
 
 function Features() {
   return (
-    <section id="features" className="mb-10">
+    <section id="key-benefit" className="mb-10">
       <SubSection
         highlightTitle="Optimize"
         title="Efficiency, Minimize Costs"

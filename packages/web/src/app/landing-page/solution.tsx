@@ -41,17 +41,20 @@ const features = [
 
 function Solution() {
   return (
-    <div className="bg-primary py-20 w-full items-center flex justify-center flex-col">
+    <section
+      id="features"
+      className="bg-primary py-20 w-full items-center flex justify-center flex-col"
+    >
       <p className="bg-secondary px-5 py-2 text-primary w-fit rounded-xl font-medium">
         THE SOLUTION
       </p>
-      <h2 className="text-white text-6xl mt-4 w-[50rem] text-center font-semibold leading-[4.5rem]">
+      <h2 className="text-white md:text-6xl text-3xl mt-4 md:w-[50rem] text-center font-semibold md:leading-[4.5rem]">
         Transform Your Operations <span className="text-secondary">Empower Your Business</span>
       </h2>
-      <p className="text-white font-light text-opacity-90 text-xl w-[30rem] mt-4 text-center">
+      <p className="text-white font-light text-opacity-90 md:text-xl md:w-[30rem] mt-4 text-center">
         A unified, scalable, and sustainable platform designed for the modern business.
       </p>
-      <div className="max-w-[100rem] w-full h-auto px-14 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="max-w-[100rem] w-full h-auto md:px-14 px-4 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         {features.map((feature) => (
           <div
             key={Math.random()}
@@ -71,7 +74,7 @@ function Solution() {
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 }
 

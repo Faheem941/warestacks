@@ -53,21 +53,21 @@ function Navbar({ isFixed = true }: NavbarProps) {
           </Link>
         </div>
         <div className="hidden md:flex space-x-8 ml-24">
-          <Link href="/#to-rent" passHref className="flex flex-col group">
-            <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
-              To rent
-            </p>
-            <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
-          </Link>
           <Link href="/#features" passHref className="flex flex-col group">
             <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
               Features
             </p>
             <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
-          <Link href="/#about-us" passHref className="flex flex-col group">
+          <Link href="/#pricing" passHref className="flex flex-col group">
             <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
-              About us
+              Pricing
+            </p>
+            <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
+          </Link>
+          <Link href="/#key-benefit" passHref className="flex flex-col group">
+            <p className="text-gray-600 hover:text-green-700 transition-all duration-300">
+              Key Benefit
             </p>
             <div className="h-[0.1rem] bg-green-700 group-hover:w-full w-0 transition-all duration-300" />
           </Link>
@@ -135,14 +135,14 @@ function Navbar({ isFixed = true }: NavbarProps) {
                 Features
               </p>
             </Link>
-            <Link href="#testimonials" passHref>
+            <Link href="/#pricing" passHref>
               <p className="block text-gray-600 hover:text-green-700 transition-all duration-300">
-                Testimonials
+                Pricing
               </p>
             </Link>
-            <Link href="#integrations" passHref>
+            <Link href="/#key-benefit" passHref>
               <p className="block text-gray-600 hover:text-green-700 transition-all duration-300">
-                Integrations
+                Key Benefit
               </p>
             </Link>
             <div className="flex flex-col space-y-4">

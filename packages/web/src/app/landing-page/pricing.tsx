@@ -2,15 +2,18 @@ import Image from 'next/image';
 
 function Pricing() {
   return (
-    <div className="bg-[#0B0F13] py-28 w-full items-center flex justify-center flex-col">
-      <h2 className="text-white text-6xl mt-4 w-[50rem] text-center font-semibold leading-[4.5rem]">
+    <section
+      id="pricing"
+      className="bg-[#0B0F13] py-28 w-full items-center flex justify-center flex-col"
+    >
+      <h2 className="text-white md:text-6xl text-3xl mt-4 md:w-[50rem] text-center font-semibold md:leading-[4.5rem]">
         Affordable Pricing Plans to Fit <span className="text-secondary">Every Budget</span>
       </h2>
-      <p className="text-white font-light text-opacity-90 text-xl w-[40rem] mt-4 text-center">
+      <p className="text-white font-light text-opacity-90 md:text-xl md:w-[40rem] mt-4 text-center">
         Find the perfect plan for your business, balancing cost-effectiveness with essential
         features for growth.
       </p>
-      <div className="max-w-[100rem] w-full h-auto px-14 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+      <div className="max-w-[100rem] w-full h-auto md:px-14 px-4 py-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
         <div className="bg-white bg-opacity-10 w-auto h-fit rounded-3xl px-6 py-6 flex-col gap-y-2 flex items-start">
           <h3 className="text-white text-2xl font-semibold">Basic</h3>
           <p className="text-white text-opacity-80">
@@ -168,7 +171,7 @@ function Pricing() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
