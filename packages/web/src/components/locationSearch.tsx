@@ -1,4 +1,4 @@
-import { IWarehouseWithRegion } from '@dwms/common';
+import { IWarehouseWithRegion } from '@warestacks/common';
 import { Suspense, useEffect, useMemo, useState } from 'react';
 import { useLazyQuery } from '@apollo/client';
 import { useDebouncedCallback } from 'use-debounce';

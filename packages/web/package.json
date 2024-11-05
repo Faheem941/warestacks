@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.8",
-    "@dwms/common": "^1.0.0",
+    "@warestacks/common": "^1.0.0",
     "@headlessui/react": "^2.2.0",
     "framer-motion": "^11.11.9",
     "graphql": "^16.9.0",

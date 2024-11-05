@@ -19,7 +19,7 @@ In production, it is deployed in a [flexible App Engine environment](https://clo
 
 ## Setting Up
 
-See [development environment setup instructions](../../README.md#setting-up-the-environment) for setting up the template workspace. After that, follow the instructions below to set up `@dwms/content-server`.
+See [development environment setup instructions](../../README.md#setting-up-the-environment) for setting up the template workspace. After that, follow the instructions below to set up `@warestacks/content-server`.
 
 1. Install [MongoDB Server](https://www.mongodb.com/download-center/community)
 1. To create MongoDB replica set:

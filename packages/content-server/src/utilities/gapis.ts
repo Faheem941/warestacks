@@ -12,7 +12,7 @@ interface ILogEvent {
 
 export const logs: ILogEvent[] = [];
 
-type BucketName = 'dwms-co-cdn';
+type BucketName = 'warestacks-com-cdn';
 
 export const storageUrl = 'https://storage.googleapis.com';
 
@@ -26,7 +26,7 @@ export function logGAEvent(
 }
 
 export function getBucketName(): BucketName {
-  return `dwms-co-cdn`;
+  return `warestacks-com-cdn`;
 }
 
 export function getBucketUrl(): string {

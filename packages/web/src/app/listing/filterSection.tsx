@@ -1,4 +1,4 @@
-import { IWarehouseLocation } from '@dwms/common';
+import { IWarehouseLocation } from '@warestacks/common';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import LocationSearch from '@/components/locationSearch';

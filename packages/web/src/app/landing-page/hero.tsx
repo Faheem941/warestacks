@@ -1,6 +1,6 @@
 'use client';
 
-import { IWarehouseWithRegion } from '@dwms/common';
+import { IWarehouseWithRegion } from '@warestacks/common';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';

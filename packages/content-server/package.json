@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@dwms/content-server",
+  "name": "@warestacks/content-server",
   "version": "0.1.0",
   "main": "src/main.js",
   "license": "UNLICENSED",
@@ -21,7 +21,7 @@
     "scripts": "yarn cross-env TS_NODE_FILES=true node --inspect -r ts-node/register scripts/index.ts"
   },
   "dependencies": {
-    "@dwms/common": "^1.0.0",
+    "@warestacks/common": "^1.0.0",
     "@google-cloud/connect-datastore": "^6.0.1",
     "@google-cloud/datastore": "^7.2.0",
     "@google-cloud/profiler": "^5.0.4",

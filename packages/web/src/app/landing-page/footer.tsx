@@ -4,7 +4,7 @@ function Footer() {
       <div className="flex flex-col">
         <div className="flex flex-row py-4 justify-center text-center">
           <p className="text-white text-sm md:text-xl">
-            Copyright © 2024 DWMS. All Rights Reserved.
+            Copyright © 2024 WareStacks. All Rights Reserved.
           </p>
         </div>
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useLazyQuery } from '@apollo/client';
-import { IWarehouse, IWarehouseWithRegion, WithRequired } from '@dwms/common';
+import { IWarehouse, IWarehouseWithRegion, WithRequired } from '@warestacks/common';
 import { useSearchParams } from 'next/navigation';
 import { useCallback, useEffect, useMemo } from 'react';
 import { getWarehousesQuery } from '@/apollo/schema/warehouse';

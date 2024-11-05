@@ -9,7 +9,7 @@ import {
   IWarehouse,
   IWarehouseLocation,
   IWarehouseProvider,
-} from '@dwms/common/model';
+} from '@warestacks/common/model';
 
 interface IBannedUser {
   email?: string;

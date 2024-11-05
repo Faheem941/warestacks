@@ -1,5 +1,5 @@
 {
-  "name": "@dwms/common",
+  "name": "@warestacks/common",
   "version": "1.0.0",
   "license": "UNLICENSED",
   "main": "model/index.ts",

@@ -1,5 +1,5 @@
 import { DataProxy } from '@apollo/client';
-import { ISelf, IUser } from '@dwms/common/model';
+import { ISelf, IUser } from '@warestacks/common/model';
 import { selfQuery, userQuery } from '../schema/user';
 
 function findField(data: object, fieldName: string) {

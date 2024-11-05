@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "@dwms/dev",
+  "name": "@warestacks/dev",
   "version": "1.0.0",
   "engines": {
     "node": "^20.9.0"
@@ -10,10 +10,10 @@
   ],
   "scripts": {
     "start": "cd packages/content-server && npm start",
-    "gcp-build": "yarn workspace @dwms/content-server gcp-build",
-    "build": "yarn workspace @dwms/content-server build",
-    "lint": "yarn workspace @dwms/content-server lint:check",
-    "test": "yarn workspace @dwms/content-server test"
+    "gcp-build": "yarn workspace @warestacks/content-server gcp-build",
+    "build": "yarn workspace @warestacks/content-server build",
+    "lint": "yarn workspace @warestacks/content-server lint:check",
+    "test": "yarn workspace @warestacks/content-server test"
   },
   "resolutions": {
     "@types/react": "18.2.65"
