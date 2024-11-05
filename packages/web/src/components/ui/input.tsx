@@ -32,8 +32,8 @@ export default function Input({
   // Classes for default and large variants
   const inputClasses =
     variant === 'large'
-      ? 'bg-white border border-gray-300 text-neutral-600 text-base rounded-2xl focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-4 pr-10' // Added padding-right for loader space
-      : 'bg-white border border-gray-300 text-neutral-500 text-sm rounded-xl focus:outline-none focus:ring-green-500 focus:border-green-500 block w-full p-3 pr-10'; // Added padding-right for loader space
+      ? 'bg-white border border-gray-300 text-neutral-600 text-base rounded-2xl focus:outline-none focus:ring-primary focus:border-primary block w-full p-4 pr-10' // Added padding-right for loader space
+      : 'bg-white border border-gray-300 text-neutral-500 text-sm rounded-xl focus:outline-none focus:ring-primary focus:border-primary block w-full p-3 pr-10'; // Added padding-right for loader space
 
   const labelClasses =
     variant === 'large'
