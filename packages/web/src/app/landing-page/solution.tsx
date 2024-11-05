@@ -2,9 +2,9 @@ import Image from 'next/image';
 
 const features = [
   {
-    title: 'Unified Platform',
+    title: 'Unified & Space Sharing Platform',
     description:
-      'Centralized dashboard offers unified monitoring and management of inventory, orders, and workflows across locations',
+      'Centralized dashboard offers warehouse space sharing and management of inventory, orders, and workflows across locations.',
     imgSrc: '/feature1.svg',
   },
   {

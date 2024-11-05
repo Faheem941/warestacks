@@ -1,7 +1,3 @@
 dispatch:
-  # staging services
-  # - url: "content-staging.dwms.co/*"
-  #   service: content-server-staging
-  # production services
-  - url: 'content.dwms.co/*'
+  - url: 'api.warestacks.com/*'
     service: default
