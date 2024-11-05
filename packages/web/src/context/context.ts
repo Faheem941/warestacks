@@ -1,6 +1,6 @@
 import { createContext } from 'react';
 
-import { ISelf } from '@dwms/common/model';
+import { ISelf } from '@warestacks/common/model';
 
 interface IContextProps {
   self?: ISelf;

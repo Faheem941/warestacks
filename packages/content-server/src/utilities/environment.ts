@@ -11,11 +11,11 @@ export const isStaging = process.env.IS_STAGING === 'true';
 const localServerHostname = 'localhost';
 
 const webServerHostname =
-  isProduction && !isProductionTest ? 'dwms-project-web.vercel.app' : localServerHostname;
-export const webHostname = isStaging ? 'staging.dwms-project-web.vercel.app' : webServerHostname;
+  isProduction && !isProductionTest ? 'warestacks.com' : localServerHostname;
+export const webHostname = isStaging ? 'staging.warestacks.com' : webServerHostname;
 export const webDomain = hostnameToDomain(webHostname);
 
-const contentServerHostname = isStaging ? 'content-staging.dwms.co' : 'content.dwms.co';
+const contentServerHostname = isStaging ? 'api-staging.warestacks.com' : 'api.warestacks.com';
 
 export const webUrl = `https://${webHostname}`;
 export const contentServerUrl = `https://${contentServerHostname}`;

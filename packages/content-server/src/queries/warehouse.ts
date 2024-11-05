@@ -1,4 +1,4 @@
-import { IWarehouseWithRegion } from '@dwms/common';
+import { IWarehouseWithRegion } from '@warestacks/common';
 import { schemaComposer, toInputType } from 'graphql-compose';
 import {
   createResolver,

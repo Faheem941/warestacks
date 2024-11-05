@@ -49,7 +49,7 @@ function Navbar({ isFixed = true }: NavbarProps) {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-fit py-2">
         <div className="flex-shrink-0">
           <Link href="/" className="text-3xl font-bold text-green-600">
-            DWMS
+            WareStacks
           </Link>
         </div>
         <div className="hidden md:flex space-x-8 ml-24">

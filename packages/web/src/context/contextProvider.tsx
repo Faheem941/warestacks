@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useQuery } from '@apollo/client';
-import { ISelf } from '@dwms/common/model';
+import { ISelf } from '@warestacks/common/model';
 
 import { selfQuery } from '@/apollo/schema/user';
 import AppContext from './context';
