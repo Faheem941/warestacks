@@ -78,7 +78,6 @@ function WarehousePage() {
                   key={Math.random()}
                   badges={warehouse.badges}
                   distance={warehouse.distanceFromLogisticHub}
-                  feature="warehouse.feature"
                   imageSrc="/hero.png"
                   name={warehouse.title}
                   ownedBy={warehouse.provider.name}
