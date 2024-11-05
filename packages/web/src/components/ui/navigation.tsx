@@ -1,12 +1,12 @@
 'use client';
 
-import { useApolloClient, useMutation } from '@apollo/client';
+// import { useApolloClient, useMutation } from '@apollo/client';
 import Link from 'next/link';
-import { useContext, useState } from 'react';
-import { logoutMutation } from '@/apollo/schema/authentication';
-import { selfQuery } from '@/apollo/schema/user';
-import useApolloErrorHandler from '@/apollo/utilities/utilities';
-import AppContext from '@/context/context';
+import { useState } from 'react';
+// import { logoutMutation } from '@/apollo/schema/authentication';
+// import { selfQuery } from '@/apollo/schema/user';
+// import useApolloErrorHandler from '@/apollo/utilities/utilities';
+// import AppContext from '@/context/context';
 import Button from './button';
 
 interface NavbarProps {
@@ -15,40 +15,40 @@ interface NavbarProps {
 
 function Navbar({ isFixed = true }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const errorHandler = useApolloErrorHandler();
-  const apolloClient = useApolloClient();
-  const { self, isSelfLoading } = useContext(AppContext);
+  // const errorHandler = useApolloErrorHandler();
+  // const apolloClient = useApolloClient();
+  // const { self, isSelfLoading } = useContext(AppContext);
 
-  const [logout, { loading: isLogoutLoading }] = useMutation<{ logout: boolean }, {}>(
-    logoutMutation,
-    {
-      onError: errorHandler,
-      onCompleted() {
-        apolloClient.stop();
-        apolloClient.clearStore();
+  // const [logout, { loading: isLogoutLoading }] = useMutation<{ logout: boolean }, {}>(
+  //   logoutMutation,
+  //   {
+  //     onError: errorHandler,
+  //     onCompleted() {
+  //       apolloClient.stop();
+  //       apolloClient.clearStore();
 
-        localStorage.clear();
+  //       localStorage.clear();
 
-        window.location.href = '/auth';
-      },
-    },
-  );
+  //       window.location.href = '/auth';
+  //     },
+  //   },
+  // );
 
-  const handleLogout = () => {
-    if (apolloClient) {
-      apolloClient.writeQuery({ query: selfQuery, data: { self: null } });
-    }
+  // const handleLogout = () => {
+  //   if (apolloClient) {
+  //     apolloClient.writeQuery({ query: selfQuery, data: { self: null } });
+  //   }
 
-    logout();
-  };
+  //   logout();
+  // };
 
-  const isLoggedIn = self && !isSelfLoading;
+  // const isLoggedIn = self && !isSelfLoading;
 
   return (
     <header className={`${isFixed ? 'sticky' : 'relative'} top-0 z-50 bg-white shadow-md w-full`}>
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-fit py-2">
         <div className="flex-shrink-0">
-          <Link href="/" className="text-3xl font-bold text-green-600">
+          <Link href="/" className="text-3xl font-bold text-primary">
             WareStacks
           </Link>
         </div>
@@ -80,7 +80,7 @@ function Navbar({ isFixed = true }: NavbarProps) {
               // window.location.href = '/auth';
             }}
           />
-          <Button
+          {/* <Button
             text={isLoggedIn ? 'Logout' : 'Login'}
             isLoading={isLogoutLoading || isSelfLoading}
             onClick={() => {
@@ -91,7 +91,7 @@ function Navbar({ isFixed = true }: NavbarProps) {
 
               window.location.href = '/auth';
             }}
-          />
+          /> */}
         </div>
         <div className="md:hidden flex items-center justify-center text-gray-600 hover:text-green-700 transition-all duration-300">
           <button type="button" onClick={() => setMenuOpen(!menuOpen)}>

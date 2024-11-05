@@ -50,8 +50,9 @@ function LocationSearch({
 
   const debouncedCallback = useDebouncedCallback((value: string) => {
     setIsShowResult(true);
-    getLocations({ variables: { searchText: value } });
-    setIsLoading(false);
+    getLocations({ variables: { searchText: value } }).then(() => {
+      setIsLoading(false);
+    });
   }, 1000);
 
   return (
