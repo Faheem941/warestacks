@@ -15,8 +15,14 @@ export const getWarehousesQuery = gql`
     $location: WarehouseLocationTypeInput!
     $minPrice: Float
     $maxPrice: Float
+    $warehouseVariant: WarehouseVariantType
   ) {
-    getWarehouses(location: $location, minPrice: $minPrice, maxPrice: $maxPrice) {
+    getWarehouses(
+      location: $location
+      minPrice: $minPrice
+      maxPrice: $maxPrice
+      warehouseVariant: $warehouseVariant
+    ) {
       badges
       description
       pricePerDay

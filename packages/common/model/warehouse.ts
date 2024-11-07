@@ -1,3 +1,5 @@
+export type WarehouseVariant = 'standard' | 'tempControlled' | 'secure';
+
 // Warehouse Listing interface
 export interface IWarehouse {
   title: string;
@@ -11,6 +13,7 @@ export interface IWarehouse {
   providerId: string;
   provider?: IWarehouseProvider;
   distanceFromLogisticHub?: number;
+  warehouseVariant?: WarehouseVariant;
 }
 
 // warehouse provider
