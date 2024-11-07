@@ -15,8 +15,15 @@ export const getWarehousesQuery = gql`
     $location: WarehouseLocationTypeInput!
     $minPrice: Float
     $maxPrice: Float
+    $warehouseVariant: WarehouseVariantType
   ) {
-    getWarehouses(location: $location, minPrice: $minPrice, maxPrice: $maxPrice) {
+    getWarehouses(
+      location: $location
+      minPrice: $minPrice
+      maxPrice: $maxPrice
+      warehouseVariant: $warehouseVariant
+    ) {
+      _id
       badges
       description
       pricePerDay
@@ -32,4 +39,10 @@ export const getWarehousesQuery = gql`
     }
   }
   ${warehouseProviderFragment}
+`;
+
+export const sendBookingMutation = gql`
+  mutation Mutation($warehouseId: String!, $email: String!, $name: String!) {
+    sendBooking(warehouseId: $warehouseId, email: $email, name: $name)
+  }
 `;

@@ -259,6 +259,10 @@ const warehouseSchema = new mongoose.Schema<IMongooseWarehouse>(
     providerId: { type: mongoose.Schema.Types.ObjectId, ref: 'WarehouseProvider', required: true },
     locationId: { type: mongoose.Schema.Types.ObjectId, ref: 'WarehouseLocation', required: true },
     distanceFromLogisticHub: { type: Number },
+    warehouseVariant: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true, autoCreate: false },
 );

@@ -3,10 +3,15 @@
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useMutation } from '@apollo/client';
+import { useSnackbar } from 'notistack';
+import { sendBookingMutation } from '@/apollo/schema/warehouse';
+import useApolloErrorHandler from '@/apollo/utilities/utilities';
 import Button from './button';
 import Input from './input';
 
 interface WarehouseCardProps {
+  _id: string;
   name: string;
   distance?: number;
   price: number;
@@ -19,6 +24,7 @@ interface WarehouseCardProps {
 }
 
 function WarehouseCard({
+  _id,
   name,
   distance = undefined,
   price,
@@ -79,22 +85,50 @@ function WarehouseCard({
           <Button text="Book Now" variant="lg" onClick={() => setOpen(!open)} />
         </div>
       </div>
-      <ModalDialog open={open} setOpen={setOpen} name={name} ownedBy={ownedBy} />
+      <ModalDialog
+        open={open}
+        setOpen={setOpen}
+        warehouseTitle={name}
+        ownedBy={ownedBy}
+        _id={_id}
+      />
     </>
   );
 }
 
 function ModalDialog({
+  _id,
   open,
   setOpen,
-  name,
+  warehouseTitle,
   ownedBy,
 }: {
+  _id: string;
   open: boolean;
   setOpen: (value: boolean) => void;
-  name: string;
+  warehouseTitle: string;
   ownedBy: string;
 }) {
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const errorHandler = useApolloErrorHandler();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const [sendBooking, { loading: isLoading }] = useMutation<
+    { sendBooking: boolean },
+    { name: string; email: string; warehouseId: string }
+  >(sendBookingMutation, {
+    onError: errorHandler,
+    onCompleted() {
+      enqueueSnackbar('Your request was submitted successful', { variant: 'success' });
+    },
+    variables: {
+      email,
+      name,
+      warehouseId: _id,
+    },
+  });
+
   return (
     <Dialog open={open} onClose={() => setOpen(false)} className="absolute z-50">
       <DialogBackdrop
@@ -114,18 +148,45 @@ function ModalDialog({
             <div className="bg-white p-8 sm:flex">
               {/* Left Section for Description */}
               <div className="flex-1 border-r border-gray-200 pr-8 content-center text-center">
-                <h2 className="text-2xl font-bold text-gray-900">{name}</h2>
+                <h2 className="text-2xl font-bold text-gray-900">{warehouseTitle}</h2>
                 <p className="mt-2 text-gray-500">{ownedBy}</p>
               </div>
 
               {/* Right Section for Form */}
               <div className="flex-1 pl-8">
                 <div className="space-y-6">
-                  <Input label="Email Address" id="email" placeholder="example@example.com" />
-                  <Input label="Full Name" id="name" placeholder="John Smith" />
+                  <Input
+                    label="Email Address"
+                    id="email"
+                    placeholder="example@example.com"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e)}
+                  />
+                  <Input
+                    label="Full Name"
+                    id="name"
+                    placeholder="John Smith"
+                    value={name}
+                    onChange={(e) => setName(e)}
+                  />
                   <div className="flex justify-end gap-x-4">
                     <Button text="Cancel" type="outlined" onClick={() => setOpen(!open)} />
-                    <Button text="Submit" />
+                    <Button
+                      text="Submit"
+                      isLoading={isLoading}
+                      onClick={async () => {
+                        if (!email.length || !name.length) {
+                          enqueueSnackbar('Please fill all the inputs', { variant: 'info' });
+                          return;
+                        }
+
+                        await sendBooking();
+                        setEmail('');
+                        setName('');
+                        setOpen(!open);
+                      }}
+                    />
                   </div>
                 </div>
               </div>

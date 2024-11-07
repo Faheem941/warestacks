@@ -15,6 +15,7 @@ function WarehousePage() {
   const location = searchParams.get('location');
   const minPrice = searchParams.get('minPrice');
   const maxPrice = searchParams.get('maxPrice');
+  const warehouseVariant = searchParams.get('warehouseVariant');
   const locationData: IWarehouseWithRegion | undefined = useMemo(() => {
     if (!location) {
       return undefined;
@@ -41,10 +42,11 @@ function WarehousePage() {
           },
           ...(minPrice ? { minPrice: parseFloat(minPrice) } : []),
           ...(maxPrice ? { maxPrice: parseFloat(maxPrice) } : []),
+          ...(warehouseVariant && warehouseVariant.length ? { warehouseVariant } : []),
         },
       });
     }
-  }, [locationData, isLoading, getWarehouses, minPrice, maxPrice]);
+  }, [locationData, isLoading, getWarehouses, minPrice, maxPrice, warehouseVariant]);
 
   useEffect(() => {
     fetchWarehouses();
@@ -75,7 +77,8 @@ function WarehousePage() {
             ) : (
               warehouses.map((warehouse) => (
                 <WarehouseCard
-                  key={Math.random()}
+                  key={warehouse._id}
+                  _id={warehouse._id}
                   badges={warehouse.badges}
                   distance={warehouse.distanceFromLogisticHub}
                   imageSrc="/hero.png"

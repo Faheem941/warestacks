@@ -1,4 +1,4 @@
-import { IWarehouseWithRegion } from '@warestacks/common';
+import { IWarehouseWithRegion, WarehouseVariant } from '@warestacks/common';
 import { schemaComposer, toInputType } from 'graphql-compose';
 import {
   createResolver,
@@ -17,6 +17,15 @@ const locationTypeComposer = schemaComposer.createObjectTC({
   fields: {
     city: 'String',
     region: 'String,',
+  },
+});
+
+const warehouseVariantType = schemaComposer.createEnumTC({
+  name: 'WarehouseVariantType',
+  values: {
+    standard: { value: 'standard' },
+    tempControlled: { value: 'tempControlled' },
+    secure: { value: 'secure' },
   },
 });
 
@@ -64,6 +73,7 @@ warehouseTypeComposer.addResolver({
     location: { type: toInputType(locationTypeComposer).getTypeNonNull() },
     minPrice: 'Float',
     maxPrice: 'Float',
+    warehouseVariant: { type: warehouseVariantType },
   },
   type: warehouseTypeComposer.getTypePlural(),
   resolve: createResolver(
@@ -73,7 +83,13 @@ warehouseTypeComposer.addResolver({
         location,
         minPrice = 50,
         maxPrice = 1000,
-      }: { location: IWarehouseWithRegion; minPrice: number; maxPrice: number } = args;
+        warehouseVariant,
+      }: {
+        location: IWarehouseWithRegion;
+        minPrice: number;
+        maxPrice: number;
+        warehouseVariant?: WarehouseVariant;
+      } = args;
 
       const providerProjections = getSubfieldProjection<
         IMongooseWarehouse,
@@ -103,6 +119,7 @@ warehouseTypeComposer.addResolver({
               pricePerDay: { $lte: maxPrice },
             },
           ],
+          ...(warehouseVariant ? { warehouseVariant } : {}),
         }).populate([
           {
             path: 'provider',

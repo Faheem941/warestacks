@@ -40,6 +40,9 @@ schemaComposer.Mutation.addFields({
   logout: selfTypeComposer.getResolver('logout'),
   registerUser: selfTypeComposer.getResolver('registerUser'),
   login: selfTypeComposer.getResolver('login'),
+
+  // warehouse mutations
+  sendBooking: warehouseTypeComposer.getResolver('sendBooking'),
 });
 
 export default schemaComposer.buildSchema();
