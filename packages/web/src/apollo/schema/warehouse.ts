@@ -23,6 +23,7 @@ export const getWarehousesQuery = gql`
       maxPrice: $maxPrice
       warehouseVariant: $warehouseVariant
     ) {
+      _id
       badges
       description
       pricePerDay
@@ -38,4 +39,10 @@ export const getWarehousesQuery = gql`
     }
   }
   ${warehouseProviderFragment}
+`;
+
+export const sendBookingMutation = gql`
+  mutation Mutation($warehouseId: String!, $email: String!, $name: String!) {
+    sendBooking(warehouseId: $warehouseId, email: $email, name: $name)
+  }
 `;

@@ -2,6 +2,7 @@ export type WarehouseVariant = 'standard' | 'tempControlled' | 'secure';
 
 // Warehouse Listing interface
 export interface IWarehouse {
+  _id: string;
   title: string;
   description: string;
   pricePerDay: number;
@@ -28,7 +29,6 @@ export interface IWarehouseProvider {
 export interface IWarehouseLocation {
   city: string;
   region: string;
-
   warehouses?: IWarehouse[];
 }
 

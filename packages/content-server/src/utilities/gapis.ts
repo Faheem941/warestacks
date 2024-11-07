@@ -37,7 +37,7 @@ export function getBucketUrl(): string {
 
 const secretManagerClient = new SecretManagerServiceClient();
 
-const secretNames = ['cookieSecret', 'databaseURL'] as const;
+const secretNames = ['cookieSecret', 'databaseURL', 'RESEND_API_KEY'] as const;
 
 const secrets: Partial<Record<(typeof secretNames)[number], string>> = {};
 

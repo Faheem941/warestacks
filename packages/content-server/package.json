@@ -21,11 +21,11 @@
     "scripts": "yarn cross-env TS_NODE_FILES=true node --inspect -r ts-node/register scripts/index.ts"
   },
   "dependencies": {
-    "@warestacks/common": "^1.0.0",
     "@google-cloud/connect-datastore": "^6.0.1",
     "@google-cloud/datastore": "^7.2.0",
     "@google-cloud/profiler": "^5.0.4",
     "@google-cloud/secret-manager": "^4.2.0",
+    "@warestacks/common": "^1.0.0",
     "apollo-server-express": "^3.13.0",
     "apollo-server-types": "^3.7.1",
     "async": "^3.2.4",
@@ -55,6 +55,7 @@
     "mongoose-unique-validator": "^4.0.0",
     "morgan": "^1.10.0",
     "pm2": "^5.3.1",
+    "resend": "^4.0.1-alpha.0",
     "validator": "^13.9.0"
   },
   "devDependencies": {

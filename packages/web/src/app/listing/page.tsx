@@ -77,7 +77,8 @@ function WarehousePage() {
             ) : (
               warehouses.map((warehouse) => (
                 <WarehouseCard
-                  key={Math.random()}
+                  key={warehouse._id}
+                  _id={warehouse._id}
                   badges={warehouse.badges}
                   distance={warehouse.distanceFromLogisticHub}
                   imageSrc="/hero.png"
