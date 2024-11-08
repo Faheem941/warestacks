@@ -43,6 +43,7 @@ schemaComposer.Mutation.addFields({
 
   // warehouse mutations
   sendBooking: warehouseTypeComposer.getResolver('sendBooking'),
+  sendPriceBooking: warehouseTypeComposer.getResolver('sendPriceBooking'),
 });
 
 export default schemaComposer.buildSchema();

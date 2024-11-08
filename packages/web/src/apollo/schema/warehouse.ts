@@ -46,3 +46,9 @@ export const sendBookingMutation = gql`
     sendBooking(warehouseId: $warehouseId, email: $email, name: $name)
   }
 `;
+
+export const sendPriceBookingMutation = gql`
+  mutation Mutation($plan: String!, $email: String!, $name: String!) {
+    sendPriceBooking(plan: $plan, email: $email, name: $name)
+  }
+`;
