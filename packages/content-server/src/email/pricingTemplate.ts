@@ -1,0 +1,102 @@
+interface TemplateProps {
+  plan: string;
+  name: string;
+}
+
+export const PricingEmailTemplate = ({ plan, name }: TemplateProps): string =>
+  `
+<!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #0B363C;
+          color: #333;
+          margin: 0;
+          padding: 20px;
+        }
+        .container {
+          max-width: 600px;
+          margin: 0 auto;
+          background-color: #ffffff;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+        }
+        h1 {
+          color: #0B363C;
+        }
+        p {
+          font-size: 16px;
+          line-height: 1.5;
+        }
+        .message-box {
+          background-color: #E0FFC7;
+          border-left: 4px solid #0B363C;
+          padding: 12px;
+          padding-left: 20px;
+          margin: 10px 0;
+          display: flex;
+          flex-direction: column;
+          
+          p {
+            padding: 0px;
+            margin-top: 1px;
+          }
+        }
+        .footer {
+          text-align: center;
+          font-size: 14px;
+          color: #677294;
+          margin-top: 20px;
+        }
+        .footer a {
+          color: #0B363C;
+        }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <h1>Booking Confirmed!</h1>
+        <p>Hi ${name},</p>
+        <p>We are excited to let you know that your pricing booking has been successfully recieved. Here are the details:</p>
+
+        <div class="message-box">
+          <p>Plan: ${plan}</p>
+        </div>
+
+        <p>Thank you for choosing our services! Our sales representative will be reaching out to you soon!</p>
+
+        <p>Best Regards,<br>WareStacks Team</p>
+
+        <div class="footer">
+          <p>If you need assistance or have any questions, <a href="https://warestacks.com">reach out via warestacks.com</a>.</p>
+          <p>&copy; 2024 warestacks.com. All rights reserved.</p>
+        </div>
+      </div>
+    </body>
+  </html>
+
+  `;
+
+export const PricingTextTemplate = ({ plan, name }: TemplateProps): string =>
+  `
+    Booking Confirmed!
+
+    Hi ${name}, \n\n
+
+    We are excited to let you know that your booking has been successfully confirmed. Here are the details:\n\n
+
+    Plan: ${plan}\n\n
+
+    Thank you for choosing our services! Our sales representative will be reaching out to you soon!\n\n
+
+    Best Regards,\n
+    WareStacks Team\n\n
+
+    If you need assistance or have any questions, please reach out via warestacks.com.\n\n
+
+    © 2024 warestacks.com. All rights reserved.
+
+  `;

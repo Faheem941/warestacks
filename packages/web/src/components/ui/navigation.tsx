@@ -50,7 +50,7 @@ function Navbar({ isFixed = true }: NavbarProps) {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-fit py-2">
         <div className="flex-shrink-0">
           <Link href="/" className="text-3xl font-bold text-primary">
-            <Image width={100} height={100} src="/logo.png" alt="logo" className="w-full h-10" />
+            <Image width={800} height={800} src="/logo.png" alt="logo" className="w-full h-10" />
           </Link>
         </div>
         <div className="hidden md:flex space-x-8 mx-auto">
