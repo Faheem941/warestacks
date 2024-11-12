@@ -59,8 +59,8 @@ function WarehousePage() {
       <Navbar isFixed={false} />
       <div className="bg-[#F7F6F5] min-h-screen h-auto relative">
         {/* Sticky Filter Section */}
-        <div className="border-b border-neutral-200 bg-white sticky z-40 top-0">
-          <div className="px-8 py-1 mx-auto max-w-7xl">
+        <div className="border-b border-neutral-200 bg-white md:sticky z-40 top-0">
+          <div className="md:px-8 py-1 md:mx-auto max-w-7xl">
             <FilterSection />
           </div>
         </div>
@@ -71,7 +71,7 @@ function WarehousePage() {
             <CircularProgress />
           </div>
         ) : (
-          <div className="flex flex-col gap-6 pt-8 pb-20 items-center mx-auto">
+          <div className="flex flex-col gap-6 pt-8 pb-20 items-center mx-auto md:px-0 px-2">
             {!warehouses || !warehouses.length ? (
               <h2>Unable to find any warehouse at this location or price</h2>
             ) : (

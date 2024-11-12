@@ -155,18 +155,12 @@ function Navbar({ isFixed = true }: NavbarProps) {
                   Key Benefit
                 </p>
               </Link>
-              <div className="flex flex-col space-y-4">
+              <div className="mt-4">
                 <Button
-                  text="Sign Up"
+                  text="Contact"
                   type="outlined"
                   onClick={() => {
-                    window.location.href = '/auth';
-                  }}
-                />
-                <Button
-                  text="Login"
-                  onClick={() => {
-                    window.location.href = '/auth';
+                    setIsModalOpen(!isModalOpen);
                   }}
                 />
               </div>

@@ -76,7 +76,7 @@ function LocationSearch({
         isLoading={isLoading}
       />
       <div
-        className={`absolute ${variant === 'default' ? 'top-20' : 'top-24'} left-0 bg-white  shadow-xl ${locationsData?.getLocations.length && isShowResult && !selectedLocation ? 'h-fit w-full z-10' : 'h-0 w-0 -z-10'} border border-gray-300 rounded-xl flex flex-col`}
+        className={`absolute ${variant === 'default' ? 'top-20' : 'top-24'} left-0 bg-white  shadow-xl ${locationsData?.getLocations.length && isShowResult && !selectedLocation ? 'h-fit w-full z-[1000]' : 'h-0 w-0 -z-10'} border border-gray-300 rounded-xl flex flex-col`}
       >
         {isShowResult &&
           !selectedLocation &&

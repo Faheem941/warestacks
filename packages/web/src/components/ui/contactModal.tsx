@@ -53,9 +53,9 @@ export default function ContactModal({ open, setOpen }: ContactModalProps) {
             <div className="bg-white bg-opacity-80 flex flex-row items-center justify-center py-2">
               <p className="text-header-color font-semibold">Contact</p>
             </div>
-            <div className="bg-white p-8 sm:flex">
+            <div className="bg-white md:p-8 p-4 sm:flex">
               <div className="flex flex-col w-full">
-                <h2 className="text-2xl text-header-color mb-5">
+                <h2 className="md:text-2xl text-lg text-header-color mb-5">
                   Please provide the following information
                 </h2>
                 <div className="space-y-5">

@@ -41,7 +41,7 @@ export default function BetaModal() {
                 <div className="flex flex-row gap-x-4">
                   <Button text="Close" type="outlined" onClick={() => setOpen(false)} />
                   <Button
-                    text="Signup"
+                    text="Join Now"
                     onClick={() => {
                       window.open(signupLink, '_blank');
                       setOpen(false);
