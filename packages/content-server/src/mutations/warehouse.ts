@@ -4,9 +4,9 @@ import { Warehouse, optimized } from '../mongoose';
 import { getSecret } from '../utilities/gapis';
 import { BookingEmailTemplate, BookingTextTemplate } from '../email/bookingTemplate';
 import { PricingEmailTemplate, PricingTextTemplate } from '../email/pricingTemplate';
+import { emailRegex } from '../utilities/miscellaneous';
 
 /* ----------------------------------------- Resolvers ------------------------------------------ */
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 warehouseTypeComposer.addResolver({
   name: 'sendBooking',
