@@ -20,8 +20,8 @@ function FilterSection() {
   const [warehouseVariant, setWarehouseVariant] = useState<WarehouseVariantFE>('na');
 
   return (
-    <div className="flex items-center gap-4 p-4 px-20">
-      <div className="w-[70rem]">
+    <div className="flex items-center md:gap-4 md:p-4 md:px-20 md:flex-row flex-col px-4 p-3 gap-3">
+      <div className="md:w-[70rem] w-full">
         <LocationSearch
           setSelectedLocation={setSelectedLocation}
           selectedLocation={selectedLocation}

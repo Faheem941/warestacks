@@ -20,3 +20,9 @@ export const selfQuery = gql`
   ${userFragment}
   ${selfFragment}
 `;
+
+export const sendContactUsMutation = gql`
+  mutation Mutation($message: String!, $email: String!, $name: String!) {
+    sendContactUs(message: $message, email: $email, name: $name)
+  }
+`;

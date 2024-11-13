@@ -19,3 +19,5 @@ export function hasAccount<T extends Partial<IMongooseUser> | Partial<IMongooseS
 
   return true;
 }
+
+export const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

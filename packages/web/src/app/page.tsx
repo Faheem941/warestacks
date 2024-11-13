@@ -1,11 +1,12 @@
 import Navigation from '@/components/ui/navigation';
+import BetaModal from '@/components/ui/betaModal';
 import Features from './landing-page/features';
 import Footer from './landing-page/footer';
 import Hero from './landing-page/hero';
 import Pricing from './landing-page/pricing';
 import Problem from './landing-page/problem';
 import Solution from './landing-page/solution';
-//
+
 export default function Home() {
   return (
     <div className="w-full h-full">
@@ -28,6 +29,7 @@ export default function Home() {
         <Features />
         <Footer />
       </div>
+      <BetaModal />
     </div>
   );
 }
