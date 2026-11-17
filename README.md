@@ -1,8 +1,18 @@
 # WareStacks
 
+**Live site:** [warestacks-web.vercel.app](https://warestacks-web.vercel.app/)
+
 WareStacks is a web platform for finding and booking warehouse space. Businesses can search for warehouses by location, filter listings by price, and send booking or pricing requests straight from a listing. Each request triggers a confirmation email to the customer and a notification to the sales team.
 
 The project is a TypeScript monorepo with a Next.js front end, a GraphQL content server backed by MongoDB, and a shared library of types and utilities. The web app is deployed on Vercel and the content server on Google Cloud App Engine.
+
+## Screenshots
+
+![WareStacks home page with location search](docs/screenshots/home.jpg)
+
+![Platform features section](docs/screenshots/features.jpg)
+
+![Pricing plans](docs/screenshots/pricing.jpg)
 
 ## Features
 
