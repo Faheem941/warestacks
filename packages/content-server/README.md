@@ -1,54 +1,40 @@
-# template Content Server
+# @warestacks/content-server
 
-A Node.js webserver, which provides a [GraphQL](https://graphql.org/) API for serving content to template project components and perform data operations in a [MongoDB](https://www.mongodb.com/) database. It also uses the following packages:
+A Node.js server that provides the [GraphQL](https://graphql.org/) API for WareStacks. It serves warehouse listings, handles booking, pricing and contact requests, and stores data in [MongoDB](https://www.mongodb.com/). It is built with:
 
-- **[Express](https://github.com/expressjs/express#readme)** - as the webserver
-- **[Mongoose](https://github.com/Automattic/mongoose#readme)** - to add schema validation and other extensions (like virtual fields) to MongoDB
-- **[GraphQL Compose Mongoose](https://github.com/graphql-compose/graphql-compose-mongoose)** - to generate GraphQL type definitions from Mongoose schema
-- **[Apollo Server Express](https://github.com/apollographql/apollo-server#readme)** - to manage the Apollo Client API requests
-- **[ESLint](https://github.com/eslint/eslint#readme)** ([AirBnB config](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#readme)) - for good and consistent code quality
+- **[Express](https://github.com/expressjs/express#readme)** as the web server
+- **[Mongoose](https://github.com/Automattic/mongoose#readme)** for schema validation and other extensions to MongoDB, such as virtual fields
+- **[GraphQL Compose Mongoose](https://github.com/graphql-compose/graphql-compose-mongoose)** to generate GraphQL types from the Mongoose schemas
+- **[Apollo Server](https://github.com/apollographql/apollo-server#readme)** to handle GraphQL requests
+- **[Resend](https://resend.com/)** to send transactional emails
+- **[ESLint](https://github.com/eslint/eslint#readme)** with the [Airbnb config](https://github.com/airbnb/javascript/tree/master/packages/eslint-config-airbnb#readme) for consistent code quality
 
-It's currently written in JavaScript with [JSDoc](https://github.com/jsdoc/jsdoc#readme) type comments, but it's planned to be converted to TypeScript for better type sharing and syntax.
+In production it runs on Google Cloud App Engine and loads its secrets from Google Cloud Secret Manager.
 
-In production, it is deployed in a [flexible App Engine environment](https://cloud.google.com/appengine/docs/flexible) on Google Cloud (due to websocket requirements).
+## Setting up
 
-## Table of Contents
+Install the workspace dependencies from the root of the repository first (see the [main README](../../README.md#getting-started)). Then:
 
-- [Setting Up](#setting-up)
-- [Deployment](#deployment)
-
-## Setting Up
-
-See [development environment setup instructions](../../README.md#setting-up-the-environment) for setting up the template workspace. After that, follow the instructions below to set up `@warestacks/content-server`.
-
-1. Install [MongoDB Server](https://www.mongodb.com/download-center/community)
-1. To create MongoDB replica set:
-
-   1. Run MongoDB daemon with `mongod --replSet "rs0"`, or if you are using it as a service, edit `mongod.cfg` (in `C:\Program Files\MongoDB\Server\<version>\bin` on Windows) and include the following in it:
+1. Install [MongoDB Server](https://www.mongodb.com/try/download/community).
+2. Run MongoDB as a replica set:
+   1. Start the daemon with `mongod --replSet "rs0"`. If you run MongoDB as a service, add the following to `mongod.cfg` and restart the service instead:
 
       ```cfg
       replication:
         replSetName: rs0
       ```
 
-      then restart the service.
-
-   1. Inside `mongosh` shell initiate replica set with `rs.initiate()`
-   1. You can find more information about creating local replica set on macOS [here](https://dariocarrasquel.com/2020/09/07/how-to-create-a-mongodb-replica-set-in-macos-local-environment/)
-
-1. Generate a TLS certificate for development
-   1. Install [MKCert](https://github.com/FiloSottile/mkcert#readme)
-   1. Run `mkcert -install` with elevated privileges. This will install a root CA locally, so that you can generate trusted certificates with it.
-   1. Create a `tls` directory inside `content-server`, change into it and generate a certificate using `mkcert localhost 127.0.0.1 ::1` (add more hostnames if necessary; e.g. add your local IP address to access your local server through your network)
-   1. Rename the key to `key.pem` and the certificate to `certificate.pem`
-   1. Find the certificate of the root CA you've just installed (with `mkcert -CAROOT`) and copy it (`rootCA.pem`) to the `tls` directory.
-1. To generate test data, open the terminal, navigate to packages/content-server and enter `yarn scripts` select `initializeDatabase` and wait until the script finishes.
-1. Open a terminal in VSCode and enter `yarn dev` to start the development server (make sure you have run `yarn install` previously in the root of the environment). It will restart on every source file change.
-
-## Production Run
-
-To connect to the production database instead of the local one, run `yarn dangerous:prodrun`. **Be careful when using this command**, it will perform all operations on the live production database. See more instructions in the [main readme](../../README.md#production-test).
+   2. In the `mongosh` shell, start the replica set with `rs.initiate()`.
+3. Generate a TLS certificate for local development:
+   1. Install [mkcert](https://github.com/FiloSottile/mkcert#readme).
+   2. Run `mkcert -install` with elevated privileges to install a local root CA.
+   3. Create a `tls` directory inside `content-server`, change into it and run `mkcert localhost 127.0.0.1 ::1`. Add more hostnames if you need them, such as your local IP address.
+   4. Rename the key to `key.pem` and the certificate to `certificate.pem`.
+   5. Copy the root CA certificate (`rootCA.pem`, found with `mkcert -CAROOT`) into the `tls` directory.
+4. Create a `.env` file in this directory with the variables listed in the [main README](../../README.md#environment-variables).
+5. To load test data, run `yarn scripts`, choose `initializeDatabase` and wait for it to finish.
+6. Start the development server with `yarn dev`. It restarts whenever a source file changes.
 
 ## Deployment
 
-See instructions in the [readme of the repository](../../README.md#deployment-to-google-cloud).
+See the [deployment section](../../README.md#deployment) of the main README.
