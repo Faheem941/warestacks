@@ -39,7 +39,6 @@ userTypeComposer.addResolver({
           message,
           name,
         }),
-        bcc: ['m941faheem@gmail.com'],
       });
 
       resolve(true);
